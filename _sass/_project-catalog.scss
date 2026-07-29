@@ -72,6 +72,21 @@
   text-transform: uppercase;
 }
 
+.project-game-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.35rem;
+  color: var(--global-theme-color);
+  font-size: 0.62em;
+  vertical-align: 0.12em;
+}
+
+.project-game-icon-small {
+  margin-left: 0.25rem;
+  font-size: 0.72em;
+}
+
 .subject-link,
 .project-link {
   margin-top: auto;
@@ -187,6 +202,14 @@
   margin: 0;
 }
 
+.project-example-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+}
+
 .project-example > p {
   color: var(--global-text-color-light);
 }
@@ -226,5 +249,9 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 0.25rem;
+  }
+
+  .project-example-actions {
+    justify-content: flex-start;
   }
 }

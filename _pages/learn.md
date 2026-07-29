@@ -33,9 +33,9 @@ children:
     <span class="subject-link">View subject →</span>
   </a>
   <a class="subject-card" href="{{ '/learn/differential-equations/' | relative_url }}">
-    <span class="subject-count">6 projects</span>
+    <span class="subject-count">9 projects</span>
     <h2>Differential Equations</h2>
-    <p>Epidemics, physical motion, circuits, and Lanchester’s law.</p>
+    <p>Epidemics, ecosystems, projectiles, orbital motion, circuits, and other changing systems.</p>
     <span class="subject-link">View subject →</span>
   </a>
   <a class="subject-card" href="{{ '/learn/linear-algebra/' | relative_url }}">

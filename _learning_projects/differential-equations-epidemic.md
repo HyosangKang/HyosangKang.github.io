@@ -6,6 +6,7 @@ permalink: /learn/differential-equations/epidemic-simulation/
 subject: Differential Equations
 subject_slug: differential-equations
 project_order: 1
+has_game: true
 pathway: Learn Mathematics
 back_url: /learn/differential-equations/
 back_label: Differential Equations projects

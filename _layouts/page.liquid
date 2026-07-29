@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% if page._styles %}
+  <style type="text/css">
+    {{ page._styles }}
+  </style>
+{% endif %}
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      {{ page.title }}
+      {% if page.has_game %}
+        <span class="project-game-icon" title="Includes an interactive game" aria-label="Includes an interactive game">
+          <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+        </span>
+      {% endif %}
+    </h1>
+    <p class="post-description">{{ page.description }}</p>
+  </header>
+
+  <article>
+    {{ content }}
+  </article>
+
+  {% if page.related_publications %}
+    <h2>References</h2>
+    <div class="publications">
+      {% bibliography --cited_in_order %}
+    </div>
+  {% endif %}
+
+  {% if site.plugins contains 'al_comments' %}
+    {% include plugins/al_comments.liquid %}
+  {% endif %}
+</div>

@@ -66,7 +66,12 @@
         <article class="project-example">
           <div class="project-example-heading">
             <h3>{{ example.title }}</h3>
-            <a href="{{ example.src | relative_url }}" target="_blank" rel="noopener">Open full screen ↗</a>
+            <div class="project-example-actions">
+              {% if example.source_url %}
+                <a href="{{ example.source_url }}" target="_blank" rel="noopener">Source code ↗</a>
+              {% endif %}
+              <a href="{{ example.src | relative_url }}" target="_blank" rel="noopener">Open full screen ↗</a>
+            </div>
           </div>
           <p>{{ example.description }}</p>
           <iframe

@@ -6,18 +6,19 @@ permalink: /learn/differential-equations/stone-skipping/
 subject: Differential Equations
 subject_slug: differential-equations
 project_order: 2
+has_game: true
 pathway: Learn Mathematics
 back_url: /learn/differential-equations/
 back_label: Differential Equations projects
 question: What launch and impact conditions make a stone skip repeatedly across water?
 goals:
-  - Build a motion model for flight, impact, and rebound.
-  - Simulate a skipping path and test how angle, speed, and spin affect it.
-method_intro: Model each flight and use an impact rule to begin the next one.
+  - Build a motion model with gravity in air and fluid forces during water contact.
+  - Simulate the trajectory and measure how launch conditions change the number of skips.
+method_intro: Integrate one motion model that changes its forces as the stone enters and leaves the water.
 method:
-  - Write differential equations for the stone's motion between water contacts.
-  - Set a rule for energy loss and direction change at each impact.
-  - Step through the motion numerically and compare different launch conditions.
+  - Represent the stone as a shallow tilted segment with mass, length, position, and velocity.
+  - Apply gravity above the surface; during partial immersion, compute lift and drag from speed, submerged length, and the two fluid coefficients.
+  - Advance the state in short Euler steps, record each water contact, and compare trajectories for different launches.
 visual:
   - label: Launch
     text: Speed, angle, and spin
@@ -25,7 +26,7 @@ visual:
     text: Flight and water impact
   - label: Result
     text: A sequence of skips
-visual_caption: Each water contact changes the stone's motion and starts a new flight.
+visual_caption: The MATLAB force model produces a shallow sequence of skips whose height and spacing decrease as fluid drag removes speed.
 ---
 
 {% include resource-page.liquid %}

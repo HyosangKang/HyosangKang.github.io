@@ -6,6 +6,7 @@ permalink: /learn/calculus/polygon-area/
 subject: Calculus
 subject_slug: calculus
 project_order: 4
+has_game: true
 pathway: Learn Mathematics
 back_url: /learn/calculus/
 back_label: Calculus projects

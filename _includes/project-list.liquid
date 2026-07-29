@@ -4,7 +4,14 @@
   {% for project in project_items %}
     <a class="project-card" href="{{ project.url | relative_url }}">
       <span class="project-number">{{ project.project_order | prepend: '0' | slice: -2, 2 }}</span>
-      <h2>{{ project.title }}</h2>
+      <h2>
+        {{ project.title }}
+        {% if project.has_game %}
+          <span class="project-game-icon project-game-icon-small" title="Includes an interactive game" aria-label="Includes an interactive game">
+            <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+          </span>
+        {% endif %}
+      </h2>
       <p>{{ project.description }}</p>
       <span class="project-link">Open project page →</span>
     </a>

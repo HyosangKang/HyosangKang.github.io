@@ -201,6 +201,7 @@ kramdown:
 include: ["_pages"]
 exclude:
   - _archive/
+  - game-source/
   - al-folio-upgrade-report.md
   - bin/
   - CONTRIBUTING.md

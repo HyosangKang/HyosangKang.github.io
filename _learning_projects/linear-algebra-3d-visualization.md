@@ -6,6 +6,7 @@ permalink: /learn/linear-algebra/3d-visualization/
 subject: Linear Algebra
 subject_slug: linear-algebra
 project_order: 2
+has_game: true
 pathway: Learn Mathematics
 back_url: /learn/linear-algebra/
 back_label: Linear Algebra projects

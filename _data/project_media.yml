@@ -14,6 +14,7 @@ calculus-polygon-area:
   examples:
     - title: Fill!
       src: /game/fill/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/fill
       aspect_ratio: 4 / 3
       description: Draw a polygon with the requested number of vertices and try to match the target area. The program computes the area from the vertices.
       instructions: Click once to start, then left-click to place each vertex. Right-click returns to the start.
@@ -22,27 +23,46 @@ differential-equations-epidemic:
   examples:
     - title: Virus!
       src: /game/virus/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/virus
       aspect_ratio: 4 / 3
       description: An agent-based epidemic example in which contact changes agents from healthy to exposed, infected, and recovered.
       instructions: Press Enter to start. The colours show each agent’s current state.
-    - title: Predator!
-      src: /game/predator/main.html
-      aspect_ratio: 4 / 3
-      description: A related population-dynamics example with interacting human, fish, and coral populations.
-      instructions: Press Enter to start. Use Q, W, and E to add humans, fish, and coral.
 
 differential-equations-stone-skipping:
   examples:
+    - title: Stone Skipping
+      src: /game/stone-skipping/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/stone-skipping
+      aspect_ratio: 16 / 10
+      description: A numerical simulation based on the attached MATLAB model, with gravity in air and speed-dependent lift and drag during partial water immersion.
+      instructions: Drag backward from the stone and release. Press Enter for the MATLAB default launch, Space to pause, or R to reset.
+
+differential-equations-projectile-motion:
+  examples:
     - title: Throw!
       src: /game/throw/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/throw
       aspect_ratio: 3 / 1
-      description: A compact projectile-motion model for experimenting with launch direction, velocity, and gravity before adding water impacts.
-      instructions: Click and drag from the launch point, then release to throw.
+      description: Choose an initial velocity and watch gravity turn it into a projectile trajectory.
+      instructions: Click and drag to choose a launch velocity, then release. Click again after landing to reset.
+
+differential-equations-orbital-motion:
+  examples:
     - title: Rocket!
       src: /game/rocket/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/rocket
       aspect_ratio: 1 / 1
-      description: A related motion model in which a launched object follows a path under a central gravitational force.
+      description: Launch an object inside a central gravitational field and compare collision and curved-flight paths.
       instructions: Press Enter, then click and drag from the rocket to choose its initial velocity.
+
+differential-equations-ecosystem-populations:
+  examples:
+    - title: Predator!
+      src: /game/predator/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/predator
+      aspect_ratio: 4 / 3
+      description: Change the numbers of humans, fish, and coral in a simple agent-based food-chain model.
+      instructions: Press Enter to start. Use Q, W, and E to add humans, fish, and coral.
 
 differential-equations-electric-circuit:
   source_images:
@@ -54,6 +74,7 @@ linear-algebra-3d-visualization:
   examples:
     - title: Rotate!
       src: /game/rotate/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/rotate
       aspect_ratio: 1 / 1
       description: A playable example that applies rotation matrices and scaling to a wireframe torus.
       instructions: Press Enter. Use W/S, Q/E, and A/D for the three rotation axes; use Up/Down to zoom.
