@@ -766,27 +766,122 @@ def draw_hyperbolic(key, title, tiled=False):
 
 def draw_timetable(key, title):
     fig, ax = base_figure(title)
-    days = ["Mon", "Tue", "Wed", "Thu", "Fri"]
-    times = ["09", "10", "11", "13", "14", "15"]
-    r = rng_for(key)
-    colors = [BLUE, TEAL, CORAL, GOLD, "#8e7dbe"]
-    for i, day in enumerate(days):
-        ax.text(1.9 + i * 1.45, 4.55, day, ha="center", color=INK, fontweight="bold")
-    for j, time in enumerate(times):
-        ax.text(0.85, 3.95 - j * 0.62, time, ha="center", va="center", color=INK)
-    for i in range(5):
-        for j in range(6):
-            ax.add_patch(Rectangle((1.2 + i * 1.45, 3.65 - j * 0.62), 1.35, 0.54,
-                                   facecolor="white", edgecolor=GRID))
-    for label, i, j, span, c in [("MATH", 0, 0, 2, 0), ("PHYS", 1, 2, 1, 1),
-                                  ("COMP", 2, 1, 2, 2), ("LAB", 3, 3, 2, 3),
-                                  ("SEMINAR", 4, 0, 1, 4), ("ALG", 1, 5, 1, 0)]:
-        ax.add_patch(Rectangle((1.24 + i * 1.45, 3.69 - j * 0.62 - (span - 1) * 0.62),
-                               1.27, 0.46 + (span - 1) * 0.62,
-                               facecolor=colors[c], edgecolor="white", alpha=0.85))
-        ax.text(1.875 + i * 1.45, 3.92 - j * 0.62 - (span - 1) * 0.31, label,
-                ha="center", va="center", color="white", fontsize=9, fontweight="bold")
-    ax.text(5.1, 0.2, "no clashes • balanced loads • required rooms", ha="center", color=INK)
+    graph = nx.Graph()
+    graph.add_edges_from(
+        [
+            ("MATH", "PHYS"),
+            ("MATH", "COMP"),
+            ("MATH", "LAB"),
+            ("PHYS", "COMP"),
+            ("PHYS", "ALG"),
+            ("COMP", "SEMINAR"),
+            ("LAB", "SEMINAR"),
+            ("LAB", "ALG"),
+        ]
+    )
+    positions = nx.spring_layout(graph, seed=4)
+    positions = {
+        node: (1.95 + point[0] * 1.25, 2.65 + point[1] * 1.45)
+        for node, point in positions.items()
+    }
+    palette = [BLUE, TEAL, CORAL, GOLD]
+    colouring = nx.coloring.greedy_color(graph, strategy="largest_first")
+    nx.draw_networkx_edges(graph, positions, ax=ax, edge_color=GRID, width=1.6)
+    nx.draw_networkx_nodes(
+        graph,
+        positions,
+        ax=ax,
+        node_color=[palette[colouring[node]] for node in graph],
+        node_size=470,
+        edgecolors="white",
+        linewidths=1.5,
+    )
+    nx.draw_networkx_labels(graph, positions, ax=ax, font_size=8, font_color="white")
+    ax.text(1.95, 4.55, "1. Build the conflict graph", ha="center", color=INK, fontweight="bold")
+    ax.text(
+        1.95,
+        0.45,
+        "an edge means two courses\ncannot share a time",
+        ha="center",
+        color=INK,
+        fontsize=10,
+    )
+
+    ax.add_patch(
+        FancyArrowPatch(
+            (3.55, 2.6),
+            (4.35, 2.6),
+            arrowstyle="-|>",
+            mutation_scale=18,
+            color=INK,
+            lw=2.2,
+        )
+    )
+    ax.text(3.95, 2.9, "colour", ha="center", color=INK, fontsize=10)
+
+    ax.text(5.15, 4.55, "2. Assign time slots", ha="center", color=INK, fontweight="bold")
+    slot_y = [3.65, 2.85, 2.05, 1.25]
+    for index, (y, color) in enumerate(zip(slot_y, palette)):
+        ax.add_patch(Rectangle((4.35, y - 0.25), 1.65, 0.5, facecolor=color, edgecolor="white"))
+        ax.text(5.175, y, f"slot {index + 1}", ha="center", va="center", color="white", fontweight="bold")
+
+    ax.add_patch(
+        FancyArrowPatch(
+            (6.1, 2.6),
+            (6.8, 2.6),
+            arrowstyle="-|>",
+            mutation_scale=18,
+            color=INK,
+            lw=2.2,
+        )
+    )
+    ax.text(6.45, 2.9, "place", ha="center", color=INK, fontsize=10)
+
+    ax.text(8.25, 4.55, "3. Check the timetable", ha="center", color=INK, fontweight="bold")
+    labels = list(graph.nodes)
+    for col in range(3):
+        for row in range(4):
+            ax.add_patch(
+                Rectangle(
+                    (6.95 + col * 0.92, 1.25 + row * 0.72),
+                    0.82,
+                    0.6,
+                    facecolor="white",
+                    edgecolor=GRID,
+                )
+            )
+    for index, label in enumerate(labels):
+        color = palette[colouring[label]]
+        col = index % 3
+        row = colouring[label]
+        ax.add_patch(
+            Rectangle(
+                (6.98 + col * 0.92, 1.28 + row * 0.72),
+                0.76,
+                0.54,
+                facecolor=color,
+                edgecolor="white",
+                alpha=0.88,
+            )
+        )
+        ax.text(
+            7.36 + col * 0.92,
+            1.55 + row * 0.72,
+            label,
+            ha="center",
+            va="center",
+            color="white",
+            fontsize=7.5,
+            fontweight="bold",
+        )
+    ax.text(
+        8.25,
+        0.45,
+        "then add room, instructor,\nand student constraints",
+        ha="center",
+        color=INK,
+        fontsize=10,
+    )
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 5)
     finish(fig, ax, key)
