@@ -123,6 +123,13 @@ visual-tools-hyperbolic-geometry:
 
 rauzy-fractal:
   source_only: true
+  instructional_images:
+    - src: /assets/img/projects/rauzy-method.png
+      alt: A three-step diagram showing a substitution word, its prefix-count lattice path, and projection to a Rauzy fractal.
+      caption: "Method: iterate a symbolic substitution, count prefixes as a lattice path, then remove the expanding direction by projecting onto the contracting plane."
+    - src: /assets/img/projects/rauzy-self-similarity.png
+      alt: A Rauzy fractal separated into three coloured pieces, each resembling a transformed copy of the whole.
+      caption: "Structure: separating points by their final symbol reveals smaller transformed pieces that fit back into the complete fractal."
   source_images:
     - src: /assets/img/projects/rauzy-fractal-1.png
       alt: A two-dimensional Rauzy fractal divided into three coloured pieces.
@@ -133,19 +140,27 @@ rauzy-fractal:
 
 qubo:
   source_only: true
-  source_images:
-    - src: /assets/img/projects/qubo-1.png
-      alt: Two QUBO performance curves for increasing problem size at parameter 0.75.
-      caption: QUBO experiment results at parameter 0.75.
-    - src: /assets/img/projects/qubo-2.png
-      alt: Two QUBO performance curves for increasing problem size at parameter 0.90.
-      caption: QUBO experiment results at parameter 0.90.
-    - src: /assets/img/projects/qubo-3.png
-      alt: Two QUBO performance curves for increasing problem size at parameter 1.00.
-      caption: QUBO experiment results at parameter 1.00.
+  instructional_images:
+    - src: /assets/img/projects/qubo-motivation.png
+      alt: A graph-colouring problem becomes a higher-degree binary objective that must be reduced to the quadratic form accepted by a quantum annealer.
+      caption: "Motivation: compact graph-colouring encodings create terms above degree two, but a quantum annealer accepts pairwise terms. Each auxiliary bit introduced during reduction consumes another physical resource."
+    - src: /assets/img/projects/qubo-symmetric-reduction.png
+      alt: Ten cubic monomials reduced separately with ten auxiliary bits compared with one symmetric block reduced using two auxiliary bits.
+      caption: "Main idea: conventional methods reduce each monomial separately. The new method recognizes a homogeneous symmetric block and reduces its shared structure together."
+    - src: /assets/img/projects/qubo-resource-comparison.png
+      alt: Bar charts comparing monomial and symmetric reductions for an eight-vertex complete graph, showing fewer binary variables and quadratic terms.
+      caption: "Result for K₈ with eight colours: symmetric reduction uses 480 variables instead of 1,180 and 2,797 quadratic terms instead of 5,849."
+      wide: true
 
 hyperbolic-surface-code:
   source_only: true
+  instructional_images:
+    - src: /assets/img/projects/hyperbolic-surface-code-motivation.png
+      alt: A square Euclidean surface code compared with a disk-shaped hyperbolic surface code containing several logical regions.
+      caption: "Motivation: Euclidean surface codes have strong distance but encode relatively few logical qubits. Hyperbolic geometry can keep a constant encoding rate, with a trade-off in how quickly distance grows."
+    - src: /assets/img/projects/hyperbolic-surface-code-local-global.png
+      alt: A hyperbolic code showing a local stabilizer check and a non-contractible global cycle that stores logical information.
+      caption: "Method: local checks reveal the boundary of a short error chain, while a loop that cannot shrink away acts as a logical operator on the encoded information."
   source_images:
     - src: /assets/img/projects/hyperbolic-surface-code-1.png
       alt: Three views of surface codes, a curved geometric cell, and a hyperbolic code lattice.
@@ -156,3 +171,20 @@ hyperbolic-surface-code:
     - src: /assets/img/projects/hyperbolic-surface-code-3.png
       alt: Logical error-rate curves for hyperbolic surface-code layers.
       caption: Threshold behaviour measured across several code layers.
+
+automated-timetabling-algorithm:
+  source_only: true
+  instructional_images:
+    - src: /assets/img/projects/automated-timetabling-method.png
+      alt: Courses, rooms, instructors, and student plans enter a backtracking constraint search that produces a reviewable timetable.
+      caption: "Method: combine course, room, instructor, and student requirements; place the most constrained courses first; reject conflicts; and backtrack when a choice blocks completion."
+      wide: true
+  source_images:
+    - src: /assets/img/projects/automated-timetabling-progress-source.png
+      alt: The DATA app showing automatic timetable generation at 88 percent and the courses currently being processed.
+      caption: "Output in progress: the app reports generation progress and shows which courses are hardest to place."
+      wide: true
+    - src: /assets/img/projects/automated-timetabling-review-source.png
+      alt: The DATA app timetable review screen showing course blocks and warnings for student and classroom conflicts after moving a block.
+      caption: "Human review remains part of the workflow: an administrator can move a course block, see student and room conflicts immediately, undo changes, and save the revised timetable."
+      wide: true

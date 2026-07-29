@@ -18,6 +18,12 @@
 </section>
 
 <div class="project-gallery">
+  {% for image in media.instructional_images %}
+    <figure class="project-image project-instructional-image{% if image.wide %} project-image-wide{% endif %}">
+      <img src="{{ image.src | relative_url }}" alt="{{ image.alt | escape }}" loading="lazy" decoding="async">
+      <figcaption>{{ image.caption }}</figcaption>
+    </figure>
+  {% endfor %}
   {% unless media.source_only %}
     <figure class="project-image">
       <img
@@ -30,7 +36,7 @@
     </figure>
   {% endunless %}
   {% for image in media.source_images %}
-    <figure class="project-image project-source-image">
+    <figure class="project-image project-source-image{% if image.wide %} project-image-wide{% endif %}">
       <img src="{{ image.src | relative_url }}" alt="{{ image.alt | escape }}" loading="lazy" decoding="async">
       <figcaption>{{ image.caption }}</figcaption>
     </figure>
@@ -57,6 +63,18 @@
     {% endfor %}
   </ul>
 </section>
+
+{% if page.demo_link_text %}
+  <section class="resource-section">
+    <h2>Try the app</h2>
+    <div class="project-demo-pending">
+      <span class="project-demo-link-text" aria-disabled="true">{{ page.demo_link_text }}</span>
+      {% if page.demo_note %}
+        <p>{{ page.demo_note }}</p>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
 
 {% if media.examples %}
   <section class="resource-section">

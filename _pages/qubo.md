@@ -2,28 +2,31 @@
 layout: page
 title: QUBO
 permalink: /topics/qubo/
-description: Explore how discrete optimization problems become quadratic functions of binary variables.
+description: Reduce graph-colouring models to efficient quadratic binary objectives for quantum annealing.
 nav: false
 pathway: Explore Research
 back_url: /topics/
 back_label: Explore Research
-question: How can a constrained discrete problem be written as a quadratic energy over binary variables?
+question: How can a graph-colouring model be reduced to QUBO form with far fewer auxiliary variables?
 goals:
-  - Formulate objectives and constraints in QUBO form.
-  - Connect the model with scheduling, graph colouring, and quantum annealing.
-method_intro: Encode every decision as 0 or 1 and make invalid choices increase the objective value.
+  - Explain why compact graph-colouring models create terms above degree two.
+  - Reduce repeated symmetric terms together instead of handling every monomial separately.
+  - Measure the saving in binary variables and quadratic interactions before quantum annealing.
+method_intro: The key is to find homogeneous symmetric parts of the objective and reduce their shared structure as one block.
 method:
-  - Define the binary variables and write the original objective.
-  - Add quadratic penalty terms for each constraint.
-  - Inspect the energy landscape and solve small cases with classical or annealing methods.
-visual:
-  - label: Problem
-    text: Choices, costs, and rules
-  - label: QUBO
-    text: Quadratic binary energy
-  - label: Solution
-    text: Lowest-energy bit string
-visual_caption: A successful QUBO makes feasible, high-quality solutions appear at the bottom of its energy landscape.
+  - Encode each vertex colour compactly with binary variables and penalize adjacent vertices that receive the same colour.
+  - Identify large symmetric groups among the resulting higher-degree terms.
+  - Reduce each symmetric group first, then apply ordinary monomial reduction only to the terms left over.
+  - Compare auxiliary variables and quadratic terms on random graphs and complete graphs.
+visual_caption: Efficient degree reduction makes a graph-colouring QUBO smaller before it is embedded on quantum hardware.
 ---
 
 {% include resource-page.liquid %}
+
+<section class="resource-section">
+  <h2>Read more</h2>
+  <ul>
+    <li><a href="https://doi.org/10.7468/jksmeb.2024.31.1.57" target="_blank" rel="noopener">Research paper ↗</a></li>
+    <li><a href="https://github.com/HyosangKang/qubo" target="_blank" rel="noopener">Source code ↗</a></li>
+  </ul>
+</section>
