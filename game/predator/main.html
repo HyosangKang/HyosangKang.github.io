@@ -1,5 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predator!</title>
+<style>
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
+canvas { width: 100% !important; height: 100% !important; object-fit: contain; }
+</style>
 <script src="wasm_exec.js"></script>
+</head>
+<body>
 <script>
 // Polyfill
 if (!WebAssembly.instantiateStreaming) {
@@ -14,3 +25,5 @@ WebAssembly.instantiateStreaming(fetch("predator.wasm"), go.importObject).then(r
     go.run(result.instance);
 });
 </script>
+</body>
+</html>

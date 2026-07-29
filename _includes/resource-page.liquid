@@ -9,27 +9,33 @@
   {% endif %}
 </div>
 
-{% if page.visual %}
-  <figure class="project-visual">
-    <div class="visual-flow" aria-label="{{ page.visual_caption }}">
-      {% for step in page.visual %}
-        <div class="visual-step">
-          <span>{{ step.label }}</span>
-          <strong>{{ step.text }}</strong>
-        </div>
-        {% unless forloop.last %}
-          <span class="visual-arrow" aria-hidden="true">→</span>
-        {% endunless %}
-      {% endfor %}
-    </div>
-    <figcaption>{{ page.visual_caption }}</figcaption>
-  </figure>
-{% endif %}
+{% assign media_key = page.path | split: '/' | last | remove: '.md' %}
+{% assign media = site.data.project_media[media_key] %}
 
 <section class="resource-section">
   <h2>Question</h2>
   <p class="resource-question">{{ page.question }}</p>
 </section>
+
+<div class="project-gallery">
+  {% unless media.source_only %}
+    <figure class="project-image">
+      <img
+        src="{{ '/assets/img/projects/' | append: media_key | append: '.png' | relative_url }}"
+        alt="{{ page.visual_caption | escape }}"
+        loading="lazy"
+        decoding="async"
+      >
+      <figcaption>{{ page.visual_caption }}</figcaption>
+    </figure>
+  {% endunless %}
+  {% for image in media.source_images %}
+    <figure class="project-image project-source-image">
+      <img src="{{ image.src | relative_url }}" alt="{{ image.alt | escape }}" loading="lazy" decoding="async">
+      <figcaption>{{ image.caption }}</figcaption>
+    </figure>
+  {% endfor %}
+</div>
 
 <section class="resource-section">
   <h2>Goals</h2>
@@ -51,3 +57,29 @@
     {% endfor %}
   </ul>
 </section>
+
+{% if media.examples %}
+  <section class="resource-section">
+    <h2>Try an example</h2>
+    <div class="project-examples">
+      {% for example in media.examples %}
+        <article class="project-example">
+          <div class="project-example-heading">
+            <h3>{{ example.title }}</h3>
+            <a href="{{ example.src | relative_url }}" target="_blank" rel="noopener">Open full screen ↗</a>
+          </div>
+          <p>{{ example.description }}</p>
+          <iframe
+            class="interactive-frame"
+            src="{{ example.src | relative_url }}"
+            title="{{ example.title | escape }} interactive example"
+            loading="lazy"
+            style="aspect-ratio: {{ example.aspect_ratio }};"
+            allow="fullscreen"
+          ></iframe>
+          <p class="example-instructions"><strong>Controls:</strong> {{ example.instructions }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
