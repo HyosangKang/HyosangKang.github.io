@@ -34,8 +34,8 @@ differential-equations-stone-skipping:
       src: /game/stone-skipping/main.html
       source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/stone-skipping
       aspect_ratio: 16 / 10
-      description: A numerical simulation based on the attached MATLAB model, with gravity in air and speed-dependent lift and drag during partial water immersion.
-      instructions: Drag backward from the stone and release. Press Enter for the MATLAB default launch, Space to pause, or R to reset.
+      description: A simple old-style game based on the attached MATLAB model, with gravity in air and speed-dependent lift and drag during water contact.
+      instructions: Press Enter or click to begin. Drag backward from the stone and release; Enter uses the MATLAB default shot. Use Space to pause, R to reset, or Esc for the title.
 
 differential-equations-projectile-motion:
   examples:
