@@ -7,33 +7,32 @@ nav: false
 ---
 
 <p class="project-intro">
-  Explore mathematical ideas by building, modelling, computing, and experimenting.
-  The first collection contains 18 projects across four subjects.
+  Math Projects is a collection of guided mathematical projects for high-school
+  and undergraduate students. It brings together projects for learning
+  mathematical subjects and projects that lead into mathematical research.
 </p>
 
 <div class="subject-grid">
-  <a class="subject-card" href="{{ '/learn/calculus/' | relative_url }}">
-    <span class="subject-count">6 projects</span>
-    <h2>Calculus</h2>
-    <p>Compute functions, draw surfaces, transform images, and model data.</p>
-    <span class="subject-link">Browse Calculus →</span>
+  <a class="subject-card" href="{{ '/learn/' | relative_url }}">
+    <span class="subject-count">Learn</span>
+    <h2>Projects for learning</h2>
+    <p>
+      Explore subject-based projects in Calculus, Differential Equations, Linear
+      Algebra, and Quantum Computing.
+    </p>
+    <span class="subject-link">Browse learning projects →</span>
   </a>
-  <a class="subject-card" href="{{ '/learn/differential-equations/' | relative_url }}">
-    <span class="subject-count">6 projects</span>
-    <h2>Differential Equations</h2>
-    <p>Build simulations for epidemics, motion, circuits, and competing populations.</p>
-    <span class="subject-link">Browse Differential Equations →</span>
-  </a>
-  <a class="subject-card" href="{{ '/learn/linear-algebra/' | relative_url }}">
-    <span class="subject-count">3 projects</span>
-    <h2>Linear Algebra</h2>
-    <p>Explore encryption, three-dimensional transformations, and data classification.</p>
-    <span class="subject-link">Browse Linear Algebra →</span>
-  </a>
-  <a class="subject-card" href="{{ '/learn/quantum-computing/' | relative_url }}">
-    <span class="subject-count">3 projects</span>
-    <h2>Quantum Computing</h2>
-    <p>Construct simulators and investigate quantum approaches to cryptography.</p>
-    <span class="subject-link">Browse Quantum Computing →</span>
+  <a class="subject-card" href="{{ '/research/' | relative_url }}">
+    <span class="subject-count">Research</span>
+    <h2>Projects for research</h2>
+    <p>
+      Discover longer investigations developed for R&amp;E and undergraduate
+      research programs.
+    </p>
+    <span class="subject-link">Browse research projects →</span>
   </a>
 </div>
+
+Use <a href="{{ '/topics/' | relative_url }}">Topics</a> for mathematical
+background and <a href="{{ '/browse/' | relative_url }}">Browse</a> to view the
+complete resource collection.
