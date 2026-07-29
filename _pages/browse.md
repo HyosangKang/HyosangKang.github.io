@@ -58,4 +58,9 @@ nav_order: 4
     <h3>Hyperbolic Surface Code</h3>
     <span class="subject-link">Open topic →</span>
   </a>
+  <a class="subject-card" href="{{ '/topics/automated-timetabling-algorithm/' | relative_url }}">
+    <span class="subject-count">Research Topic</span>
+    <h3>Automated Timetabling Algorithm</h3>
+    <span class="subject-link">Open topic →</span>
+  </a>
 </div>

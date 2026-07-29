@@ -16,6 +16,8 @@ children:
     permalink: /topics/qubo/
   - title: Hyperbolic Surface Code
     permalink: /topics/hyperbolic-surface-code/
+  - title: Automated Timetabling Algorithm
+    permalink: /topics/automated-timetabling-algorithm/
 ---
 
 <p class="project-intro">
@@ -37,6 +39,11 @@ children:
   <a class="subject-card" href="{{ '/topics/hyperbolic-surface-code/' | relative_url }}">
     <span class="subject-count">Research Topic</span>
     <h2>Hyperbolic Surface Code</h2>
+    <span class="subject-link">Open topic →</span>
+  </a>
+  <a class="subject-card" href="{{ '/topics/automated-timetabling-algorithm/' | relative_url }}">
+    <span class="subject-count">Research Topic</span>
+    <h2>Automated Timetabling Algorithm</h2>
     <span class="subject-link">Open topic →</span>
   </a>
 </div>

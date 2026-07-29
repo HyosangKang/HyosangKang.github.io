@@ -1,0 +1,53 @@
+<a class="project-back" href="{{ page.back_url | relative_url }}">← {{ page.back_label }}</a>
+
+<div class="resource-meta" aria-label="Resource details">
+  <span>{{ page.pathway }}</span>
+  {% if page.subject %}
+    <span>{{ page.subject }}</span>
+  {% elsif page.area %}
+    <span>{{ page.area }}</span>
+  {% endif %}
+</div>
+
+{% if page.visual %}
+  <figure class="project-visual">
+    <div class="visual-flow" aria-label="{{ page.visual_caption }}">
+      {% for step in page.visual %}
+        <div class="visual-step">
+          <span>{{ step.label }}</span>
+          <strong>{{ step.text }}</strong>
+        </div>
+        {% unless forloop.last %}
+          <span class="visual-arrow" aria-hidden="true">→</span>
+        {% endunless %}
+      {% endfor %}
+    </div>
+    <figcaption>{{ page.visual_caption }}</figcaption>
+  </figure>
+{% endif %}
+
+<section class="resource-section">
+  <h2>Question</h2>
+  <p class="resource-question">{{ page.question }}</p>
+</section>
+
+<section class="resource-section">
+  <h2>Goals</h2>
+  <ul>
+    {% for goal in page.goals %}
+      <li>{{ goal }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="resource-section">
+  <h2>Method</h2>
+  {% if page.method_intro %}
+    <p>{{ page.method_intro }}</p>
+  {% endif %}
+  <ul>
+    {% for item in page.method %}
+      <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+</section>

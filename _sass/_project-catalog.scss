@@ -95,6 +95,91 @@
   margin-bottom: 0;
 }
 
+.resource-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.resource-meta span {
+  padding: 0.32rem 0.7rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 999px;
+  color: var(--global-text-color-light);
+  font-size: 0.82rem;
+}
+
+.project-visual {
+  margin: 1.5rem 0 2.25rem;
+  padding: 1.4rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.8rem;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--global-theme-color) 12%, transparent), transparent 38%),
+    var(--global-card-bg-color, var(--global-bg-color));
+}
+
+.visual-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.65rem;
+}
+
+.visual-step {
+  display: flex;
+  min-height: 6.5rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.9rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.65rem;
+  background: var(--global-bg-color);
+  text-align: center;
+}
+
+.visual-step span {
+  margin-bottom: 0.35rem;
+  color: var(--global-theme-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.visual-step strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.visual-arrow {
+  align-self: center;
+  color: var(--global-theme-color);
+  font-size: 1.35rem;
+}
+
+.project-visual figcaption {
+  margin-top: 0.9rem;
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.resource-section {
+  margin: 2rem 0;
+}
+
+.resource-section h2 {
+  margin-bottom: 0.8rem;
+}
+
+.resource-question {
+  max-width: 48rem;
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
 @media (max-width: 680px) {
   .subject-grid,
   .pathway-grid,
@@ -105,5 +190,13 @@
   .subject-card,
   .project-card {
     min-height: 10rem;
+  }
+
+  .visual-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-arrow {
+    transform: rotate(90deg);
   }
 }
