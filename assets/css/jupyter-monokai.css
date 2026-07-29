@@ -185,7 +185,8 @@ ul#tabs a {
 
 .btn:hover,
 .btn:active:hover,
-.btn.active:hover {
+.btn.active:hover,
+.open > .dropdown-toggle.btn:hover {
   color: #a6e22e;
   border: 2px solid #2a2a2a;
   background-color: #2a2a2a;
@@ -200,7 +201,9 @@ ul#tabs a {
 .btn:active:focus,
 .btn.active:focus,
 .btn:active.focus,
-.btn.active.focus {
+.btn.active.focus,
+.open > .dropdown-toggle.btn:focus,
+.open > .dropdown-toggle.btn.focus {
   color: #a6e22e;
   border: 2px solid #2a2a2a;
   background-color: #2a2a2a !important;
