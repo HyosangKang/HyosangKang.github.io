@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import math
 import shutil
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -15,7 +16,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
-from matplotlib.patches import Circle, FancyArrowPatch, Polygon, Rectangle
+from matplotlib.patches import Circle, Ellipse, FancyArrowPatch, Polygon, Rectangle
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
 from PIL import Image
 
@@ -42,6 +43,12 @@ PROJECTS = {
     "calculus-mnist": ("MNIST Data", "mnist"),
     "differential-equations-epidemic": ("Epidemic Simulation", "sir"),
     "differential-equations-stone-skipping": ("Stone-skipping Simulation", "skipping"),
+    "differential-equations-projectile-motion": ("Projectile Motion", "projectile"),
+    "differential-equations-orbital-motion": ("Orbital Motion", "orbit"),
+    "differential-equations-ecosystem-populations": (
+        "Ecosystem Population Dynamics",
+        "predator-prey",
+    ),
     "differential-equations-spring": ("Spring Oscillation", "spring"),
     "differential-equations-double-spring": ("Double-spring Motion", "double-spring"),
     "differential-equations-electric-circuit": ("Electric-circuit Simulation", "circuit"),
@@ -329,23 +336,149 @@ def draw_sir(key, title):
 
 def draw_skipping(key, title):
     fig, ax = base_figure(title)
-    ax.axhline(0, color=BLUE, lw=3)
-    starts = [(0.4, 2.8, 3.1, 1.15), (3.05, 1.0, 2.1, 0.72), (5.2, 0.55, 1.45, 0.45)]
-    for idx, (x0, h, span, apex) in enumerate(starts):
-        x = np.linspace(x0, x0 + span, 120)
-        u = (x - x0) / span
-        y = 4 * apex * u * (1 - u)
-        ax.plot(x, y, color=[CORAL, GOLD, TEAL][idx], lw=3)
-        ax.scatter([x0 + span], [0], s=55, color=INK, zorder=4)
-    ax.add_patch(Polygon([[0.1, 2.5], [0.55, 2.62], [0.8, 2.48], [0.48, 2.38]],
-                         color=INK, alpha=0.85))
-    ax.text(7.0, 2.15, "gravity", color=INK, fontsize=15)
-    ax.add_patch(FancyArrowPatch((7.35, 1.95), (7.35, 0.6), arrowstyle="-|>",
-                                 mutation_scale=16, color=CORAL, lw=2))
-    ax.text(7.9, 1.0, "impact + rebound", color=INK, fontsize=15)
-    ax.set_xlim(0, 10)
-    ax.set_ylim(-0.2, 3.3)
+    dt = 0.005
+    theta = np.pi / 200
+    x, y, vx, vy = 0.0, 0.5, 150.0, 0.5
+    xs, ys, contacts = [x], [y], []
+    in_water = False
+    for _ in range(5000):
+        ax_force, ay_force = 0.0, -10.0
+        if y > 0:
+            in_water = False
+        else:
+            if not in_water:
+                contacts.append(x)
+                in_water = True
+            if y + 5 * np.sin(theta) > 0:
+                submerged = min(abs(y), 5) / np.sin(theta)
+                speed_squared = vx * vx + vy * vy
+                ay_force = -10 + 0.5 * speed_squared * submerged * (
+                    0.1 * np.cos(theta) - 0.3 * np.sin(theta)
+                )
+                ax_force = -0.5 * speed_squared * submerged * (
+                    0.1 * np.sin(theta) + 0.3 * np.cos(theta)
+                )
+            else:
+                ax_force = -0.3 * vx * vx
+                ay_force = -10 + 0.3 * vy * vy
+        ax_force = np.clip(ax_force, -7000, 7000)
+        ay_force = np.clip(ay_force, -7000, 7000)
+        vx += ax_force * dt
+        vy += ay_force * dt
+        x += vx * dt
+        y += vy * dt
+        if y > 0.04:
+            in_water = False
+        xs.append(x)
+        ys.append(y)
+        if y < -2 or vx < 3:
+            break
+
+    xs, ys = np.array(xs), np.array(ys)
+    ax.fill_between([0, max(xs) * 1.02], -1.5, 0, color=BLUE, alpha=0.18)
+    ax.axhline(0, color=BLUE, lw=2.6)
+    ax.plot(xs, ys, color=CORAL, lw=2.6, label="computed stone trajectory")
+    ax.scatter(contacts, np.zeros(len(contacts)), s=30, color=TEAL, edgecolor="white", zorder=4,
+               label="water contacts")
+    for i, contact_x in enumerate(contacts[:8]):
+        radius = 2.2 + i * 0.8
+        ax.add_patch(Ellipse((contact_x, 0), width=2 * radius, height=0.055 + i * 0.008,
+                             fill=False, color=BLUE, alpha=0.38, lw=1.0))
+    ax.add_patch(Polygon([[4, 0.48], [18, 0.7], [25, 0.56], [11, 0.42]],
+                         color=INK, alpha=0.9))
+    ax.annotate("gravity in air", xy=(60, 0.28), xytext=(72, 0.9),
+                arrowprops={"arrowstyle": "->", "color": INK}, color=INK)
+    ax.annotate("lift + drag while partly immersed", xy=(contacts[4], 0),
+                xytext=(contacts[4] + 28, -0.85),
+                arrowprops={"arrowstyle": "->", "color": TEAL}, color=TEAL)
+    ax.set_xlim(0, max(xs) * 1.03)
+    ax.set_ylim(-1.45, 1.15)
+    ax.set_xlabel("distance")
+    ax.set_ylabel("height above water")
+    ax.legend(frameon=False, loc="upper right")
+    finish(fig, ax, key, True)
+
+
+def draw_projectile(key, title):
+    fig, ax = base_figure(title)
+    gravity = 9.8
+    speed = 34
+    angle = np.deg2rad(38)
+    flight_time = 2 * speed * np.sin(angle) / gravity
+    t = np.linspace(0, flight_time, 240)
+    x = speed * np.cos(angle) * t
+    y = speed * np.sin(angle) * t - 0.5 * gravity * t**2
+    ax.fill_between(x, 0, y, color=BLUE, alpha=0.09)
+    ax.plot(x, y, color=CORAL, lw=3, label="projectile path")
+    ax.add_patch(FancyArrowPatch((0, 0), (11 * np.cos(angle), 11 * np.sin(angle)),
+                                 arrowstyle="-|>", mutation_scale=18, color=TEAL, lw=3))
+    ax.text(8, 6.7, "initial velocity", color=TEAL, fontsize=14)
+    apex = np.argmax(y)
+    ax.scatter([x[apex]], [y[apex]], color=GOLD, s=85, edgecolor="white", zorder=4)
+    ax.annotate("vertical velocity = 0", (x[apex], y[apex]), xytext=(x[apex] + 8, y[apex] + 2),
+                arrowprops={"arrowstyle": "->", "color": INK}, color=INK)
+    ax.axhline(0, color=INK, lw=1.3)
+    ax.set_xlabel("horizontal distance")
+    ax.set_ylabel("height")
+    ax.set_ylim(-1, max(y) * 1.23)
+    finish(fig, ax, key, True)
+
+
+def draw_orbit(key, title):
+    fig, ax = base_figure(title)
+    ax.add_patch(Circle((0, 0), 0.48, facecolor=BLUE, edgecolor="white", lw=2, zorder=5))
+    ax.add_patch(Circle((-0.13, -0.08), 0.2, facecolor=TEAL, edgecolor="none", alpha=0.9, zorder=6))
+    colors = [CORAL, GOLD, TEAL]
+    labels = ["too slow", "near orbit", "escape path"]
+    velocities = [0.72, 1.0, 1.42]
+    for initial_velocity, c, label in zip(velocities, colors, labels):
+        position = np.array([2.2, 0.0], dtype=float)
+        velocity = np.array([0.0, initial_velocity], dtype=float)
+        path = [position.copy()]
+        for _ in range(1300):
+            radius = np.linalg.norm(position)
+            acceleration = -position / radius**3
+            velocity += acceleration * 0.015
+            position += velocity * 0.015
+            path.append(position.copy())
+            if radius < 0.5 or radius > 5.2:
+                break
+        path = np.array(path)
+        ax.plot(path[:, 0], path[:, 1], color=c, lw=2.4, label=label)
+    ax.add_patch(FancyArrowPatch((2.2, 0), (2.2, 1.1), arrowstyle="-|>",
+                                 mutation_scale=16, color=INK, lw=2.5))
+    ax.text(2.35, 0.55, "launch velocity", color=INK, fontsize=13)
+    ax.set_aspect("equal")
+    ax.set_xlim(-4.1, 4.8)
+    ax.set_ylim(-3.4, 3.8)
+    ax.legend(frameon=False, loc="upper left")
     finish(fig, ax, key)
+
+
+def draw_predator_prey(key, title):
+    fig, ax = base_figure(title)
+    dt = 0.015
+    prey, predator = 2.2, 0.7
+    prey_values, predator_values = [prey], [predator]
+    for _ in range(1500):
+        dprey = 1.05 * prey - 0.58 * prey * predator
+        dpredator = 0.34 * prey * predator - 0.82 * predator
+        prey += dprey * dt
+        predator += dpredator * dt
+        prey_values.append(prey)
+        predator_values.append(predator)
+    time = np.arange(len(prey_values)) * dt
+    ax.plot(time, prey_values, color=TEAL, lw=2.7, label="prey population")
+    ax.plot(time, predator_values, color=CORAL, lw=2.7, label="predator population")
+    ax.fill_between(time, prey_values, color=TEAL, alpha=0.08)
+    ax.fill_between(time, predator_values, color=CORAL, alpha=0.08)
+    ax.annotate("predators rise after prey", xy=(6.8, predator_values[int(6.8 / dt)]),
+                xytext=(8.4, max(predator_values) * 0.88),
+                arrowprops={"arrowstyle": "->", "color": INK}, color=INK)
+    ax.set_xlabel("time")
+    ax.set_ylabel("population")
+    ax.legend(frameon=False, ncol=2, loc="upper right")
+    finish(fig, ax, key, True)
 
 
 def spring_curve(t, damping, frequency):
@@ -1090,6 +1223,12 @@ def draw_project(key: str, title: str, kind: str):
         draw_sir(key, title)
     elif kind == "skipping":
         draw_skipping(key, title)
+    elif kind == "projectile":
+        draw_projectile(key, title)
+    elif kind == "orbit":
+        draw_orbit(key, title)
+    elif kind == "predator-prey":
+        draw_predator_prey(key, title)
     elif kind == "spring":
         draw_spring(key, title)
     elif kind == "double-spring":
@@ -1193,10 +1332,15 @@ def copy_source_images():
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    requested = set(sys.argv[1:])
     for key, (title, kind) in PROJECTS.items():
+        if requested and key not in requested:
+            continue
         draw_project(key, title, kind)
-    copy_source_images()
-    print(f"Created {len(PROJECTS)} project illustrations and copied source figures into {OUT}")
+    if not requested:
+        copy_source_images()
+    count = len(requested) if requested else len(PROJECTS)
+    print(f"Created {count} project illustrations in {OUT}")
 
 
 if __name__ == "__main__":
