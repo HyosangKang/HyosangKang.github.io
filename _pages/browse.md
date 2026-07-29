@@ -7,4 +7,11 @@ nav: true
 nav_order: 4
 ---
 
-<!-- Browsing and filtering will be designed after the content structure is agreed. -->
+{% assign subject_pages = site.pages | where_exp: "item", "item.subject_landing == true" | sort: "subject_order" %}
+
+{% for subject in subject_pages %}
+
+## {{ subject.title }}
+
+{% include project-list.liquid subject=subject.subject_slug %}
+{% endfor %}
