@@ -6,11 +6,20 @@
 }
 
 .subject-grid,
+.pathway-grid,
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin: 1.5rem 0 2.5rem;
+}
+
+.subject-grid,
+.project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pathway-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .subject-card,
@@ -87,6 +96,7 @@
 
 @media (max-width: 680px) {
   .subject-grid,
+  .pathway-grid,
   .project-grid {
     grid-template-columns: 1fr;
   }

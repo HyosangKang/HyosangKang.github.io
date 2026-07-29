@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Browse
+title: Find Resources
 permalink: /browse/
-description: Browse all Math Projects resources.
+description: Find all Math Projects resources in one place.
 nav: true
 nav_order: 4
 ---

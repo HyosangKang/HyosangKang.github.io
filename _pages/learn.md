@@ -1,13 +1,13 @@
 ---
 layout: page
-title: Learn
+title: Learn Mathematics
 permalink: /learn/
-description: Browse projects by mathematical subject.
+description: Learn mathematical subjects through guided projects.
 nav: true
 nav_order: 1
 dropdown: true
 children:
-  - title: All learning projects
+  - title: All subject projects
     permalink: /learn/
   - title: divider
   - title: Calculus

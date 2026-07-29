@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Research
+title: Experience Research
 permalink: /research/
-description: Research projects.
+description: Experience the research process through guided projects.
 nav: true
 nav_order: 2
 ---
