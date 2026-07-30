@@ -28,6 +28,7 @@ visual_caption: Course, room, instructor, and student constraints are combined i
 demo_link_text: Open the interactive DATA demo ↗
 demo_url: /demo/automated-timetabling/
 demo_note: The sample workbook loads automatically in a full browser simulation of DATA, or you can choose your own. The timetable engine runs locally through WebAssembly; your workbook is not uploaded.
+hide_source_images: true
 ---
 
 {% include resource-page.liquid %}

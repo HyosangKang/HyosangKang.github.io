@@ -12,6 +12,30 @@
 {% assign media_key = page.path | split: '/' | last | remove: '.md' %}
 {% assign media = site.data.project_media[media_key] %}
 
+{% if page.demo_link_text %}
+  <section class="resource-section">
+    <h2>Try the app</h2>
+    <div class="project-demo-pending">
+      {% if page.demo_url %}
+        <a
+          class="project-demo-link-text"
+          href="{{ page.demo_url | relative_url }}"
+          target="_blank"
+          rel="noopener"
+          onclick="if (window.innerWidth > 760) { var demoWindow = window.open(this.href, 'data-timetabling-demo', 'popup=yes,width=1440,height=920,resizable=yes,scrollbars=yes'); if (demoWindow) { demoWindow.opener = null; return false; } }"
+        >
+          {{- page.demo_link_text -}}
+        </a>
+      {% else %}
+        <span class="project-demo-link-text" aria-disabled="true">{{ page.demo_link_text }}</span>
+      {% endif %}
+      {% if page.demo_note %}
+        <p>{{ page.demo_note }}</p>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
 <section class="resource-section">
   <h2>Question</h2>
   <p class="resource-question">{{ page.question }}</p>
@@ -35,12 +59,14 @@
       <figcaption>{{ page.visual_caption }}</figcaption>
     </figure>
   {% endunless %}
-  {% for image in media.source_images %}
-    <figure class="project-image project-source-image{% if image.wide %} project-image-wide{% endif %}">
-      <img src="{{ image.src | relative_url }}" alt="{{ image.alt | escape }}" loading="lazy" decoding="async">
-      <figcaption>{{ image.caption }}</figcaption>
-    </figure>
-  {% endfor %}
+  {% unless page.hide_source_images %}
+    {% for image in media.source_images %}
+      <figure class="project-image project-source-image{% if image.wide %} project-image-wide{% endif %}">
+        <img src="{{ image.src | relative_url }}" alt="{{ image.alt | escape }}" loading="lazy" decoding="async">
+        <figcaption>{{ image.caption }}</figcaption>
+      </figure>
+    {% endfor %}
+  {% endunless %}
 </div>
 
 <section class="resource-section">
@@ -75,30 +101,6 @@
         {% endfor %}
       </ol>
     {% endif %}
-  </section>
-{% endif %}
-
-{% if page.demo_link_text %}
-  <section class="resource-section">
-    <h2>Try the app</h2>
-    <div class="project-demo-pending">
-      {% if page.demo_url %}
-        <a
-          class="project-demo-link-text"
-          href="{{ page.demo_url | relative_url }}"
-          target="_blank"
-          rel="noopener"
-          onclick="if (window.innerWidth > 760) { var demoWindow = window.open(this.href, 'data-timetabling-demo', 'popup=yes,width=1440,height=920,resizable=yes,scrollbars=yes'); if (demoWindow) { demoWindow.opener = null; return false; } }"
-        >
-          {{- page.demo_link_text -}}
-        </a>
-      {% else %}
-        <span class="project-demo-link-text" aria-disabled="true">{{ page.demo_link_text }}</span>
-      {% endif %}
-      {% if page.demo_note %}
-        <p>{{ page.demo_note }}</p>
-      {% endif %}
-    </div>
   </section>
 {% endif %}
 
