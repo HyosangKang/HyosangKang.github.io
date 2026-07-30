@@ -192,11 +192,11 @@ hyperbolic-surface-code:
   source_only: true
   instructional_images:
     - src: /assets/img/projects/hyperbolic-surface-code-motivation.png
-      alt: A square Euclidean surface code compared with a disk-shaped hyperbolic surface code containing several logical regions.
-      caption: "Motivation: Euclidean surface codes have strong distance but encode relatively few logical qubits. Hyperbolic geometry can keep a constant encoding rate, with a trade-off in how quickly distance grows."
-    - src: /assets/img/projects/hyperbolic-surface-code-local-global.png
-      alt: A hyperbolic code showing a local stabilizer check and a non-contractible global cycle that stores logical information.
-      caption: "Method: local checks reveal the boundary of a short error chain, while a loop that cannot shrink away acts as a logical operator on the encoded information."
+      alt: An established square surface-code lattice beside the computed two-three-seven hyperbolic surface-code model.
+      caption: "Motivation: compare the familiar Euclidean surface-code layout with the actual computed (2,3,7) hyperbolic model used in this project."
+    - src: /assets/img/projects/hyperbolic-surface-code-boundary-chains.svg
+      alt: Two disjoint boundary-to-boundary X-error chains in the computed four-four-four hyperbolic surface code.
+      caption: "Logical structure: the red and purple paths are two computed, data-and-check-disjoint chains joining different logical boundary classes in the (4,4,4) layer-0 code."
   source_images:
     - src: /assets/img/projects/hyperbolic-surface-code-1.png
       alt: Three views of surface codes, a curved geometric cell, and a hyperbolic code lattice.

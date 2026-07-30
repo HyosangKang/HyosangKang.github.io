@@ -27,6 +27,6 @@ visual_caption: Efficient degree reduction makes a graph-colouring QUBO smaller 
   <h2>Read more</h2>
   <ul>
     <li><a href="https://doi.org/10.7468/jksmeb.2024.31.1.57" target="_blank" rel="noopener">Research paper ↗</a></li>
-    <li><a href="https://github.com/HyosangKang/qubo" target="_blank" rel="noopener">Source code ↗</a></li>
+    <li><a href="https://github.com/HyosangKang/symred" target="_blank" rel="noopener">Source code ↗</a></li>
   </ul>
 </section>

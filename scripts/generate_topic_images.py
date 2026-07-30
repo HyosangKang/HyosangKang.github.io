@@ -15,12 +15,11 @@ import numpy as np
 from matplotlib.patches import (
     Arc,
     Circle,
-    Ellipse,
     FancyArrowPatch,
     Polygon,
     Rectangle,
 )
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -371,112 +370,24 @@ def draw_rauzy_self_similarity():
     save(fig, "rauzy-self-similarity.png")
 
 
-def hyperbolic_network(ax, centre, radius, highlight=False):
-    """Draw a combinatorial hyperbolic tiling compressed toward a disk boundary."""
-    cx, cy = centre
-    rings = [0.0, 0.34, 0.62, 0.82, 0.94]
-    counts = [1, 7, 14, 28, 42]
-    nodes_by_ring = []
-    for ring_index, (ring, count) in enumerate(zip(rings, counts)):
-        nodes = []
-        for index in range(count):
-            angle = 2 * np.pi * index / count + ring_index * 0.11
-            nodes.append((cx + radius * ring * np.cos(angle), cy + radius * ring * np.sin(angle)))
-        nodes_by_ring.append(nodes)
-
-    for level in range(1, len(nodes_by_ring)):
-        previous = nodes_by_ring[level - 1]
-        current = nodes_by_ring[level]
-        for index, node in enumerate(current):
-            parent = previous[int(index * len(previous) / len(current))]
-            neighbour = current[(index + 1) % len(current)]
-            ax.plot([parent[0], node[0]], [parent[1], node[1]], color=GRID, linewidth=0.75)
-            ax.plot([node[0], neighbour[0]], [node[1], neighbour[1]], color=GRID, linewidth=0.65)
-    for nodes in nodes_by_ring:
-        if nodes:
-            ax.scatter(*np.asarray(nodes).T, s=9, color=TEAL, zorder=2)
-    ax.add_patch(Circle((cx, cy), radius, fill=False, edgecolor=INK, linewidth=2.1))
-
-    if highlight:
-        return nodes_by_ring
-    return None
-
-
-def draw_euclidean_grid(ax, x0, y0, size, count=7):
-    step = size / (count - 1)
-    for index in range(count):
-        position = index * step
-        ax.plot([x0, x0 + size], [y0 + position, y0 + position], color=GRID, linewidth=1.2)
-        ax.plot([x0 + position, x0 + position], [y0, y0 + size], color=GRID, linewidth=1.2)
-    for row in range(count):
-        for col in range(count):
-            ax.add_patch(
-                Circle(
-                    (x0 + col * step, y0 + row * step),
-                    0.045,
-                    facecolor=BLUE,
-                    edgecolor="none",
-                )
-            )
-
-
 def draw_hyperbolic_motivation():
-    fig, ax = new_figure()
+    """Compare two verified source figures without redrawing either lattice."""
+    source_dir = OUT / "source"
+    euclidean = Image.open(source_dir / "hyperbolic-surface-code-euclidean-source.png").convert("RGBA")
+    hyperbolic = Image.open(source_dir / "hyperbolic-surface-code-2-3-7-source.png").convert("RGBA")
 
-    draw_euclidean_grid(ax, 0.65, 1.1, 3.25)
-    ax.text(2.28, 4.85, r"$\mathbb{R}^2$", ha="center", va="center", color=BLUE, fontsize=18)
-    arrow(ax, (4.45, 2.73), (5.35, 2.73), color=TEAL)
+    canvas = Image.new("RGB", (1440, 810), BG)
+    euclidean.thumbnail((510, 510), Image.Resampling.LANCZOS)
+    hyperbolic.thumbnail((650, 650), Image.Resampling.LANCZOS)
+    canvas.paste(euclidean, (70, 150), euclidean)
+    canvas.paste(hyperbolic, (735, 80), hyperbolic)
 
-    hyperbolic_network(ax, (7.45, 2.75), 2.0)
-    ax.text(7.45, 5.05, r"$\mathbb{H}^2$", ha="center", va="center", color=TEAL, fontsize=18)
+    draw = ImageDraw.Draw(canvas)
+    draw.line((615, 405, 700, 405), fill=TEAL, width=8)
+    draw.polygon([(700, 405), (672, 386), (672, 424)], fill=TEAL)
 
-    # Several distinct non-contractible-cycle motifs stand for more encoded
-    # logical degrees of freedom in a similar visual area.
-    for angle, color in zip(np.linspace(0, 2 * np.pi, 5, endpoint=False), [CORAL, GOLD, BLUE, CORAL, GOLD]):
-        cx = 7.45 + 0.75 * np.cos(angle)
-        cy = 2.75 + 0.75 * np.sin(angle)
-        ax.add_patch(Circle((cx, cy), 0.16, fill=False, edgecolor=color, linewidth=2.2))
-
-    save(fig, "hyperbolic-surface-code-motivation.png")
-
-
-def draw_hyperbolic_local_global():
-    fig, ax = new_figure()
-    nodes = hyperbolic_network(ax, (3.0, 2.8), 2.15, highlight=True)
-
-    # Local plaquette and its two syndrome endpoints.
-    local = np.asarray([nodes[1][0], nodes[2][0], nodes[2][1], nodes[1][1]])
-    ax.add_patch(Polygon(local, closed=True, facecolor=CORAL, edgecolor=CORAL, alpha=0.3, linewidth=3))
-    ax.add_patch(Circle(nodes[2][0], 0.13, facecolor=CORAL, edgecolor=PAPER, linewidth=1.5))
-    ax.add_patch(Circle(nodes[2][2], 0.13, facecolor=CORAL, edgecolor=PAPER, linewidth=1.5))
-
-    # A long global loop through the disk, visually distinct from the local face.
-    ax.add_patch(
-        Ellipse(
-            (3.0, 2.8),
-            3.65,
-            2.55,
-            angle=-12,
-            fill=False,
-            edgecolor=BLUE,
-            linewidth=3.2,
-        )
-    )
-
-    arrow(ax, (5.35, 3.75), (6.2, 3.75), color=CORAL)
-    # Syndrome: two local defect markers connected by a candidate correction.
-    for x in (6.72, 8.15):
-        ax.add_patch(Circle((x, 3.75), 0.2, facecolor=CORAL, edgecolor=PAPER, linewidth=1.7))
-    ax.plot([6.92, 7.95], [3.75, 3.75], color=CORAL, linewidth=3, linestyle=(0, (3, 3)))
-
-    arrow(ax, (5.35, 1.75), (6.2, 1.75), color=BLUE)
-    # Logical information: a loop around a qubit symbol.
-    ax.add_patch(Circle((7.45, 1.75), 0.82, fill=False, edgecolor=BLUE, linewidth=3))
-    ax.add_patch(Circle((7.45, 1.75), 0.34, facecolor=PAPER, edgecolor=INK, linewidth=2))
-    ax.plot([7.22, 7.68], [1.75, 1.75], color=INK, linewidth=2)
-    ax.plot([7.45, 7.45], [1.52, 1.98], color=INK, linewidth=2)
-
-    save(fig, "hyperbolic-surface-code-local-global.png")
+    path = OUT / "hyperbolic-surface-code-motivation.png"
+    canvas.save(path, optimize=True)
 
 
 def draw_book_icon(ax, cx, cy, color):
@@ -607,9 +518,8 @@ def main():
     draw_rauzy_method()
     draw_rauzy_self_similarity()
     draw_hyperbolic_motivation()
-    draw_hyperbolic_local_global()
     draw_timetabling_method()
-    print("Created 8 low-text instructional topic images")
+    print("Created 7 low-text instructional topic images")
 
 
 if __name__ == "__main__":
