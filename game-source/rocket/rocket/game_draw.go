@@ -11,8 +11,11 @@ import (
 )
 
 var (
-	ColorWhite = color.White
-	ColorRed   = color.RGBA{255, 0, 0, 255}
+	ColorWhite = color.RGBA{242, 242, 232, 255}
+	ColorRed   = color.RGBA{240, 76, 76, 255}
+	ColorBlue  = color.RGBA{46, 126, 214, 255}
+	ColorCyan  = color.RGBA{77, 215, 229, 255}
+	ColorGold  = color.RGBA{244, 197, 66, 255}
 )
 
 func (g *Game) Draw(screen *ebiten.Image) {
@@ -70,16 +73,19 @@ func (g *Game) FrontPage(screen *ebiten.Image) {
 }
 
 func (g *Game) PlayScene(screen *ebiten.Image) {
+	for _, radius := range []float64{100, 150, 200} {
+		DrawCircle(screen, Width/2, Height/2, radius, ColorBlue)
+	}
 	if g.Stage != RocketCrashed {
-		g.DrawPlanet(screen, ColorWhite)
-		g.DrawRocket(screen, ColorWhite)
+		g.DrawPlanet(screen, ColorCyan)
+		g.DrawRocket(screen, ColorGold)
 	} else {
 		g.DrawPlanet(screen, ColorRed)
 		g.DrawRocket(screen, ColorRed)
 	}
 	if g.Stage == RocketLaunching {
 		x, y := ebiten.CursorPosition()
-		DrawLine(screen, RocketXY[0], RocketXY[1], float64(x), float64(y), color.White)
+		DrawLine(screen, RocketXY[0], RocketXY[1], float64(x), float64(y), ColorWhite)
 	}
 }
 

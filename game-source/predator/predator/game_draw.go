@@ -59,6 +59,12 @@ func (g *Game) FrontPage(screen *ebiten.Image) {
 }
 
 func (g *Game) PlayScene(screen *ebiten.Image) {
+	for x := 100.0; x < Width; x += 100 {
+		DrawLine(screen, x, 0, x, Height, color.RGBA{18, 52, 82, 255})
+	}
+	for y := 100.0; y < Height; y += 100 {
+		DrawLine(screen, 0, y, Width, y, color.RGBA{18, 52, 82, 255})
+	}
 	for _, c := range g.Corals {
 		c.Draw(screen)
 	}
@@ -125,7 +131,7 @@ func AbsMax(x, y float64) float64 {
 
 func (g *Game) DrawCounterBars(screen *ebiten.Image) {
 	// Draw human counter
-	DrawBar(screen, 10, 10, len(g.Humans))
+	DrawBar(screen, 10, 10, len(g.Humans), color.RGBA{244, 197, 66, 255})
 	DrawText(screen, fmt.Sprintf("Humans  %d", len(g.Humans)), 15, BarWidth+15, 10)
 
 	// Draw fish counter
@@ -135,7 +141,7 @@ func (g *Game) DrawCounterBars(screen *ebiten.Image) {
 			numFish++
 		}
 	}
-	DrawBar(screen, 10, 10+BarHeight+BarSkip, numFish)
+	DrawBar(screen, 10, 10+BarHeight+BarSkip, numFish, color.RGBA{77, 215, 229, 255})
 	DrawText(screen, fmt.Sprintf("Fishes  %d", numFish), 15, BarWidth+15, 10+BarHeight+BarSkip)
 
 	// Draw coral counter
@@ -145,7 +151,7 @@ func (g *Game) DrawCounterBars(screen *ebiten.Image) {
 			numCoral++
 		}
 	}
-	DrawBar(screen, 10, 10+2*BarHeight+2*BarSkip, numCoral)
+	DrawBar(screen, 10, 10+2*BarHeight+2*BarSkip, numCoral, color.RGBA{240, 76, 76, 255})
 	DrawText(screen, fmt.Sprintf("Corals  %d", numCoral), 15, BarWidth+15, 10+2*BarHeight+2*BarSkip)
 }
 
@@ -156,7 +162,7 @@ const (
 	MaxNum    = 50
 )
 
-func DrawBar(screen *ebiten.Image, xoff, yoff, len int) {
+func DrawBar(screen *ebiten.Image, xoff, yoff, len int, barColor color.Color) {
 	// Draw frames
 	for i := 0; i < BarWidth; i++ {
 		screen.Set(xoff+i, yoff, color.White)
@@ -169,7 +175,7 @@ func DrawBar(screen *ebiten.Image, xoff, yoff, len int) {
 	// Draw bars
 	for i := 0; i < len; i++ {
 		for j := 0; j < BarHeight; j++ {
-			screen.Set(xoff+i, yoff+j, color.White)
+			screen.Set(xoff+i, yoff+j, barColor)
 		}
 	}
 }

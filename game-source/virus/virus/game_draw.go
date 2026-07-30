@@ -26,6 +26,12 @@ func (g *Game) FrontPage(screen *ebiten.Image) {
 	}
 }
 func (g *Game) PlayScene(screen *ebiten.Image) {
+	for x := 100.0; x < Width; x += 100 {
+		DrawLine(screen, x, 0, x, Height, color.RGBA{18, 52, 82, 255})
+	}
+	for y := 100.0; y < Height; y += 100 {
+		DrawLine(screen, 0, y, Width, y, color.RGBA{18, 52, 82, 255})
+	}
 	for _, a := range g.Agents {
 		a.Draw(screen)
 	}

@@ -99,7 +99,7 @@ func (h *Human) Draw(screen *ebiten.Image) {
 	case HumanHunting:
 		status = "H"
 	}
-	DrawCircle(screen, h.X, h.Y, HumanRadius, color.RGBA{255, 165, 0, 255})
+	DrawCircle(screen, h.X, h.Y, HumanRadius, color.RGBA{244, 197, 66, 255})
 	DrawText(screen, status, 15, h.X, h.Y)
 }
 

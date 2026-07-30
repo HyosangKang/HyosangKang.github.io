@@ -102,8 +102,8 @@ func (f *Game) init() {
 }
 
 var (
-	fillColor     = color.RGBA{150, 0, 0, 150}
-	boundaryColor = color.White
+	fillColor     = color.RGBA{46, 126, 214, 125}
+	boundaryColor = color.RGBA{77, 215, 229, 255}
 )
 
 const (

@@ -1,7 +1,8 @@
 (() => {
   const body = document.body;
   const title = body.dataset.gameTitle || "Math Project";
-  const subtitle = body.dataset.gameSubtitle || "Interactive mathematical model";
+  const subtitle =
+    body.dataset.gameSubtitle || "Interactive mathematical model";
   const wasm = body.dataset.gameWasm;
   const controls = (body.dataset.gameControls || "")
     .split("|")
@@ -12,7 +13,7 @@
     <div class="game-shell">
       <header class="game-topbar">
         <div class="game-heading">
-          <p class="game-kicker">Interactive model</p>
+          <p class="game-kicker">Math project game</p>
           <div class="game-title-row">
             <h1 class="game-title">${title}</h1>
             <p class="game-subtitle">${subtitle}</p>
@@ -37,7 +38,7 @@
       <main class="game-stage" id="game-stage" aria-label="${title} game canvas">
         <div class="game-loading" id="game-loading">
           <span class="game-loading-spinner" aria-hidden="true"></span>
-          <span>Preparing the interactive model…</span>
+          <span>Loading game...</span>
         </div>
       </main>
     </div>
@@ -48,14 +49,18 @@
   const status = document.getElementById("game-status");
   const statusText = status.querySelector(".game-status-text");
 
-  document.getElementById("game-restart").addEventListener("click", () => window.location.reload());
-  document.getElementById("game-fullscreen").addEventListener("click", async () => {
-    if (document.fullscreenElement) {
-      await document.exitFullscreen();
-    } else {
-      await document.documentElement.requestFullscreen();
-    }
-  });
+  document
+    .getElementById("game-restart")
+    .addEventListener("click", () => window.location.reload());
+  document
+    .getElementById("game-fullscreen")
+    .addEventListener("click", async () => {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await document.documentElement.requestFullscreen();
+      }
+    });
 
   const mountCanvas = () => {
     const canvas = document.querySelector("body > canvas");
@@ -85,7 +90,10 @@
       let result;
       if (WebAssembly.instantiateStreaming) {
         try {
-          result = await WebAssembly.instantiateStreaming(fetch(wasm), go.importObject);
+          result = await WebAssembly.instantiateStreaming(
+            fetch(wasm),
+            go.importObject,
+          );
         } catch {
           const source = await (await fetch(wasm)).arrayBuffer();
           result = await WebAssembly.instantiate(source, go.importObject);
@@ -97,7 +105,9 @@
       go.run(result.instance);
       mountCanvas();
     } catch (error) {
-      showError(error instanceof Error ? error.message : "Unknown loading error");
+      showError(
+        error instanceof Error ? error.message : "Unknown loading error",
+      );
     }
   };
 

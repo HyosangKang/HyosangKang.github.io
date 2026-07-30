@@ -5,48 +5,55 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
-func (game *Game) Update() error {
-	switch game.Stage {
-	case 0:
-		game.StageReady()
-	case 1:
-		game.StageThrow()
-	case 2:
-		game.StageLand()
+func (g *Game) Update() error {
+	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
+		g.reset()
+		g.scene = sceneTitle
+		return nil
+	}
+
+	switch g.scene {
+	case sceneTitle:
+		if inpututil.IsKeyJustPressed(ebiten.KeyEnter) ||
+			inpututil.IsMouseButtonJustPressed(ebiten.MouseButtonLeft) {
+			g.reset()
+		}
+	case sceneAim:
+		g.updateAim()
+	case sceneFlight:
+		g.updateFlight()
+	case sceneLanded:
+		if inpututil.IsMouseButtonJustPressed(ebiten.MouseButtonLeft) ||
+			inpututil.IsKeyJustPressed(ebiten.KeyEnter) {
+			g.reset()
+		}
 	}
 	return nil
 }
 
-func (game *Game) StageReady() {
+func (g *Game) updateAim() {
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
 		x, y := ebiten.CursorPosition()
-		game.Velocity = [2]float64{
-			float64(x-game.Origin[0]) / 50,
-			float64(y-game.Origin[1]) / 50}
-		game.CursorPos = [2]int{x, y}
+		g.cursor = [2]float64{float64(x), float64(y)}
 	}
 	if inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
-		game.Stage = 1
+		g.velocity = [2]float64{
+			(g.cursor[0] - g.origin[0]) / 5.5,
+			(g.cursor[1] - g.origin[1]) / 5.5,
+		}
+		g.scene = sceneFlight
 	}
 }
 
-func (game *Game) StageThrow() {
-	dt := 1.0
-	for i := 0; i < 2; i++ {
-		game.Position[i] += game.Velocity[i] * dt
-	}
-	game.Velocity[1] += 0.1
-	if int(game.Position[0]) > game.Width ||
-		int(game.Position[1]) > game.Origin[1] {
-		game.Stage = 2
-	}
-}
+func (g *Game) updateFlight() {
+	const dt = 0.45
+	g.position[0] += g.velocity[0] * dt
+	g.position[1] += g.velocity[1] * dt
+	g.velocity[1] += 0.34
+	g.trail = append(g.trail, point{x: g.position[0], y: g.position[1]})
 
-func (game *Game) StageLand() {
-	if inpututil.IsMouseButtonJustPressed(ebiten.MouseButtonLeft) {
-		game.Position = [2]float64{
-			float64(game.Origin[0]),
-			float64(game.Origin[1])}
-		game.Stage = 0
+	if g.position[0] > Width+12 || g.position[1] >= g.origin[1] {
+		g.position[1] = g.origin[1]
+		g.scene = sceneLanded
 	}
 }

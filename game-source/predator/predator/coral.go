@@ -46,6 +46,6 @@ func (c *Coral) Update() {
 
 func (c *Coral) Draw(screen *ebiten.Image) {
 	if c.Status == CoralAlive {
-		DrawCircle(screen, c.X, c.Y, c.Radius, color.White)
+		DrawCircle(screen, c.X, c.Y, c.Radius, color.RGBA{240, 76, 76, 255})
 	}
 }

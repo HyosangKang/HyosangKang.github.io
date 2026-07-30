@@ -84,7 +84,7 @@ func FindAliveCoral(corals []*Coral) *Coral {
 
 func (f *Fish) Draw(screen *ebiten.Image) {
 	if f.Status != FishDead {
-		DrawCircle(screen, f.X, f.Y, FishRadius, color.RGBA{60, 179, 113, 255})
+		DrawCircle(screen, f.X, f.Y, FishRadius, color.RGBA{77, 215, 229, 255})
 	}
 
 }

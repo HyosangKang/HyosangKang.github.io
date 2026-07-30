@@ -1,3 +1,12 @@
+calculus-calculator:
+  examples:
+    - title: Calculator!
+      src: /game/calculator/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/math-arcade
+      aspect_ratio: 16 / 10
+      description: Build numbers one digit at a time and apply one arithmetic operation at a time, just as a basic calculator does.
+      instructions: Click the number and operation keys. Use = to finish a calculation, BACK to remove the last digit, and C to clear.
+
 calculus-3d-graphing:
   source_images:
     - src: /assets/img/projects/calculus-3d-graphing-source.png
@@ -18,6 +27,15 @@ calculus-polygon-area:
       aspect_ratio: 4 / 3
       description: Draw a polygon with the requested number of vertices and try to match the target area. The program computes the area from the vertices.
       instructions: Click once to start, then left-click to place each vertex. Right-click returns to the start.
+
+calculus-curve-length:
+  examples:
+    - title: Curve Length!
+      src: /game/curve-length/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/math-arcade
+      aspect_ratio: 16 / 10
+      description: Approximate a smooth curve with straight segments and watch the total length settle as the segments become shorter.
+      instructions: Use + and − to change the number of line segments. Compare the gold approximation with the cyan curve and the reference length.
 
 differential-equations-epidemic:
   examples:
@@ -42,9 +60,9 @@ differential-equations-projectile-motion:
     - title: Throw!
       src: /game/throw/main.html
       source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/throw
-      aspect_ratio: 3 / 1
+      aspect_ratio: 2 / 1
       description: Choose an initial velocity and watch gravity turn it into a projectile trajectory.
-      instructions: Click and drag to choose a launch velocity, then release. Click again after landing to reset.
+      instructions: Press Enter or click to begin. Drag backward from the ball and release to throw it. Press R after landing to reset or Esc for the title.
 
 differential-equations-orbital-motion:
   examples:
@@ -64,6 +82,15 @@ differential-equations-ecosystem-populations:
       description: Change the numbers of humans, fish, and coral in a simple agent-based food-chain model.
       instructions: Press Enter to start. Use Q, W, and E to add humans, fish, and coral.
 
+differential-equations-spring:
+  examples:
+    - title: Spring!
+      src: /game/spring/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/math-arcade
+      aspect_ratio: 16 / 10
+      description: Change damping and periodic forcing, then compare the moving mass with its displacement trace.
+      instructions: Use the DAMP and FORCE buttons to change the model. Press R or click RESET to restart the motion.
+
 differential-equations-electric-circuit:
   source_images:
     - src: /assets/img/projects/differential-equations-electric-circuit-source.png
@@ -78,6 +105,15 @@ linear-algebra-3d-visualization:
       aspect_ratio: 1 / 1
       description: A playable example that applies rotation matrices and scaling to a wireframe torus.
       instructions: Press Enter. Use W/S, Q/E, and A/D for the three rotation axes; use Up/Down to zoom.
+
+quantum-computing-simulator:
+  examples:
+    - title: Qubit!
+      src: /game/quantum-simulator/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/math-arcade
+      aspect_ratio: 16 / 10
+      description: Apply simple quantum gates to one qubit, then connect its state vector with the probabilities of measuring 0 or 1.
+      instructions: Use X, H, and Z to change the state. Click MEASURE to sample an outcome and RESET to return to |0⟩.
 
 closed-geodesics-modular-surfaces:
   source_images:
