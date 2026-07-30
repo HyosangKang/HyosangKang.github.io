@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Run the DATA automated university timetabling algorithm locally in your browser."
+    />
+    <title>DATA — Automated Timetabling Demo</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="wasm_exec.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a
+        class="brand"
+        href="../../topics/automated-timetabling-algorithm/"
+        aria-label="Back to the project page"
+      >
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span>
+          <strong>DATA</strong>
+          <small>Automated Timetabling</small>
+        </span>
+      </a>
+      <div class="runtime-badge">
+        <span class="runtime-dot" aria-hidden="true"></span>
+        Runs locally with WebAssembly
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Interactive browser demo</p>
+          <h1 id="page-title">
+            Build a timetable from real course constraints.
+          </h1>
+          <p class="hero-copy">
+            Import courses, rooms, instructors, and student plans from an Excel
+            workbook. DATA tries valid placements, changes how far it steps
+            backward when stuck, and produces a reviewable set of assignments.
+          </p>
+        </div>
+        <div class="privacy-note">
+          <span aria-hidden="true">↘</span>
+          <p>
+            <strong>Your data stays here.</strong> The workbook is processed on
+            this device and is never uploaded.
+          </p>
+        </div>
+      </section>
+
+      <div
+        id="status-banner"
+        class="status-banner"
+        role="status"
+        aria-live="polite"
+      >
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="engine-status">Loading the timetabling engine…</span>
+      </div>
+
+      <section class="workspace" aria-label="Timetabling demo">
+        <nav class="steps" aria-label="Demo steps">
+          <button
+            class="step is-active"
+            type="button"
+            data-step-target="data-panel"
+            aria-current="step"
+          >
+            <span>1</span> Data
+          </button>
+          <button
+            class="step"
+            type="button"
+            data-step-target="courses-panel"
+            disabled
+          >
+            <span>2</span> Courses
+          </button>
+          <button
+            class="step"
+            type="button"
+            data-step-target="results-panel"
+            disabled
+          >
+            <span>3</span> Timetable
+          </button>
+        </nav>
+
+        <section
+          id="data-panel"
+          class="panel step-panel is-visible"
+          aria-labelledby="data-heading"
+        >
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Step 1</p>
+              <h2 id="data-heading">Choose a workbook</h2>
+              <p>
+                Start with the prepared demonstration data, or import a
+                DATA-format .xlsx file.
+              </p>
+            </div>
+          </div>
+
+          <div class="source-grid">
+            <article class="source-card source-card-primary">
+              <span class="source-icon" aria-hidden="true">✦</span>
+              <h3>Use the sample data</h3>
+              <p>
+                A prepared university dataset with courses, instructors,
+                classrooms, and student plans.
+              </p>
+              <button
+                id="load-sample"
+                class="button button-primary"
+                type="button"
+                disabled
+              >
+                Load sample workbook
+              </button>
+            </article>
+
+            <article class="source-card">
+              <span class="source-icon" aria-hidden="true">↑</span>
+              <h3>Use your own workbook</h3>
+              <p>
+                Choose a compatible Excel workbook. It will be read only inside
+                this browser tab.
+              </p>
+              <label class="button button-secondary" for="workbook-file">
+                Choose .xlsx file
+              </label>
+              <input
+                id="workbook-file"
+                type="file"
+                accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                disabled
+              />
+            </article>
+          </div>
+
+          <div id="import-summary" class="import-summary" hidden>
+            <div>
+              <span id="summary-courses">0</span>
+              <small>Courses</small>
+            </div>
+            <div>
+              <span id="summary-instructors">0</span>
+              <small>Instructors</small>
+            </div>
+            <div>
+              <span id="summary-classrooms">0</span>
+              <small>Classrooms</small>
+            </div>
+            <div>
+              <span id="summary-students">0</span>
+              <small>Student plans</small>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="courses-panel"
+          class="panel step-panel"
+          aria-labelledby="courses-heading"
+        >
+          <div class="panel-heading panel-heading-split">
+            <div>
+              <p class="section-kicker">Step 2</p>
+              <h2 id="courses-heading">Choose courses to schedule</h2>
+              <p>
+                All imported courses are included by default. Select a smaller
+                set for a quicker experiment.
+              </p>
+            </div>
+            <div class="selection-count">
+              <strong id="selected-count">0</strong> selected
+            </div>
+          </div>
+
+          <div class="course-toolbar">
+            <label class="search-field">
+              <span class="sr-only">Search courses</span>
+              <span aria-hidden="true">⌕</span>
+              <input
+                id="course-search"
+                type="search"
+                placeholder="Search code or course name"
+              />
+            </label>
+            <button id="select-visible" class="text-button" type="button">
+              Select visible
+            </button>
+            <button id="clear-visible" class="text-button" type="button">
+              Clear visible
+            </button>
+          </div>
+
+          <div class="course-table-wrap">
+            <table class="course-table">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="sr-only">Include</span></th>
+                  <th scope="col">Course</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Credits</th>
+                  <th scope="col">Students</th>
+                </tr>
+              </thead>
+              <tbody id="course-list"></tbody>
+            </table>
+          </div>
+
+          <div class="panel-actions">
+            <button
+              class="button button-secondary"
+              type="button"
+              data-go-step="data-panel"
+            >
+              Back
+            </button>
+            <button id="generate" class="button button-primary" type="button">
+              Generate timetable
+            </button>
+          </div>
+        </section>
+
+        <section
+          id="results-panel"
+          class="panel step-panel"
+          aria-labelledby="results-heading"
+        >
+          <div class="panel-heading panel-heading-split">
+            <div>
+              <p class="section-kicker">Step 3</p>
+              <h2 id="results-heading">Generated timetable</h2>
+              <p id="results-description">
+                The final time-and-room assignments appear here.
+              </p>
+            </div>
+            <button id="new-run" class="button button-secondary" type="button">
+              Change selection
+            </button>
+          </div>
+
+          <div id="run-progress" class="run-progress" hidden>
+            <div class="progress-heading">
+              <span id="progress-label">Trying course placements…</span>
+              <strong id="progress-percent">0%</strong>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="progress-course">Preparing the search order</p>
+            <button id="cancel-run" class="text-button danger" type="button">
+              Cancel run
+            </button>
+          </div>
+
+          <div id="result-summary" class="result-summary" hidden>
+            <div>
+              <strong id="assigned-count">0</strong>
+              <span>courses assigned</span>
+            </div>
+            <div>
+              <strong id="room-count">0</strong>
+              <span>rooms used</span>
+            </div>
+            <div>
+              <strong id="day-count">0</strong>
+              <span>teaching days</span>
+            </div>
+          </div>
+
+          <div id="results-empty" class="results-empty">
+            <span aria-hidden="true">⌁</span>
+            <p>Generate a timetable to see assignments.</p>
+          </div>
+
+          <div id="results-table-wrap" class="results-table-wrap" hidden>
+            <div class="results-toolbar">
+              <label class="search-field">
+                <span class="sr-only">Search assignments</span>
+                <span aria-hidden="true">⌕</span>
+                <input
+                  id="result-search"
+                  type="search"
+                  placeholder="Search assignments"
+                />
+              </label>
+              <button id="download-results" class="text-button" type="button">
+                Download CSV
+              </button>
+            </div>
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th scope="col">Course</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Room</th>
+                </tr>
+              </thead>
+              <tbody id="results-list"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <aside class="idea-card" aria-labelledby="idea-heading">
+        <div class="idea-number" aria-hidden="true">↶</div>
+        <div>
+          <p class="section-kicker">What the engine is doing</p>
+          <h2 id="idea-heading">
+            Try, detect a dead end, then change the backward step.
+          </h2>
+          <p>
+            If a course cannot be placed, DATA does not always undo just the
+            last choice. It grows the backward distance and moves the difficult
+            course earlier in the order. The next attempt therefore changes a
+            wider part of the partial timetable instead of repeating the same
+            short loop.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <p>DATA browser demo · Timetabling engine compiled to WebAssembly</p>
+      <a href="../../topics/automated-timetabling-algorithm/"
+        >Read about the algorithm</a
+      >
+    </footer>
+  </body>
+</html>
