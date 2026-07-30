@@ -64,11 +64,37 @@
   </ul>
 </section>
 
+{% if page.core_idea %}
+  <section class="resource-section">
+    <h2>The core idea: adaptive backtracking</h2>
+    <p>{{ page.core_idea }}</p>
+    {% if page.core_steps %}
+      <ol>
+        {% for step in page.core_steps %}
+          <li>{{ step }}</li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </section>
+{% endif %}
+
 {% if page.demo_link_text %}
   <section class="resource-section">
     <h2>Try the app</h2>
     <div class="project-demo-pending">
-      <span class="project-demo-link-text" aria-disabled="true">{{ page.demo_link_text }}</span>
+      {% if page.demo_url %}
+        <a
+          class="project-demo-link-text"
+          href="{{ page.demo_url | relative_url }}"
+          target="_blank"
+          rel="noopener"
+          onclick="if (window.innerWidth > 760) { var demoWindow = window.open(this.href, 'data-timetabling-demo', 'popup=yes,width=1440,height=920,resizable=yes,scrollbars=yes'); if (demoWindow) { demoWindow.opener = null; return false; } }"
+        >
+          {{- page.demo_link_text -}}
+        </a>
+      {% else %}
+        <span class="project-demo-link-text" aria-disabled="true">{{ page.demo_link_text }}</span>
+      {% endif %}
       {% if page.demo_note %}
         <p>{{ page.demo_note }}</p>
       {% endif %}
