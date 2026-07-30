@@ -1,0 +1,29 @@
+/*******************************************************************************
+ * Stable navigation
+ ******************************************************************************/
+
+// The theme normally inserts the site title only on inner pages. Hide that
+// duplicate title so the navigation begins at the same horizontal position on
+// every page. A custom icon-only brand can still occupy a consistent slot.
+.navbar-brand.title:not(.site-brand) {
+  display: none;
+}
+
+.site-brand-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Active navigation is shown with colour, not a different font width. This
+// prevents the neighbouring menu items from moving when the active page
+// changes.
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+  font-weight: inherit;
+}
