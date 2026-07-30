@@ -301,14 +301,6 @@ div.panel,
   box-shadow: none;
 }
 
-div.panel > .panel-heading {
-  font-size: 14pt;
-  color: #303030;
-  background: #e4e4e4;
-  background-color: #e4e4e4;
-  border: 0;
-}
-
 input,
 button,
 select,
