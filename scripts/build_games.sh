@@ -9,7 +9,7 @@ if [ ! -f "$wasm_exec" ]; then
   exit 1
 fi
 
-for game_name in fill predator rocket rotate throw virus stone-skipping
+for game_name in fill predator rocket rotate throw virus stone-skipping math-arcade
 do
   source_dir="$repo_root/game-source/$game_name"
   output_dir="$repo_root/game/$game_name"
