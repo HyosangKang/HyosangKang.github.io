@@ -27,7 +27,7 @@ core_steps:
 visual_caption: Course, room, instructor, and student constraints are combined in a backtracking search, producing a timetable that can still be checked and revised by a person.
 demo_link_text: Open the interactive DATA demo ↗
 demo_url: /demo/automated-timetabling/
-demo_note: Load the included sample workbook or choose your own. The timetable engine runs locally in your browser through WebAssembly; your workbook is not uploaded.
+demo_note: The sample workbook loads automatically in a full browser simulation of DATA, or you can choose your own. The timetable engine runs locally through WebAssembly; your workbook is not uploaded.
 ---
 
 {% include resource-page.liquid %}
