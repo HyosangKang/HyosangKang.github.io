@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Rauzy Fractal
-permalink: /topics/rauzy-fractal/
+permalink: /explore/rauzy-fractal/
 description: Explore how substitutions and eigenvectors produce self-similar geometric fractals.
 nav: false
 pathway: Explore Research
-back_url: /topics/
+back_url: /explore/
 back_label: Explore Research
 question: How does a symbolic substitution create a self-similar geometric fractal?
 goals:

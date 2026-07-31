@@ -6,7 +6,7 @@ area: Algorithms & Discrete Mathematics
 area_slug: algorithms-discrete-mathematics
 project_order: 3
 pathway: Experience Research
-back_url: "/research/#algorithms-discrete-mathematics"
+back_url: "/experience/algorithms-discrete-mathematics/"
 back_label: Algorithms & Discrete Mathematics projects
 question: How can limited shared resources be allocated fairly and efficiently?
 goals:

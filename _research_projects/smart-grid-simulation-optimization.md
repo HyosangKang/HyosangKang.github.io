@@ -6,7 +6,7 @@ area: Mathematical Modelling
 area_slug: mathematical-modelling
 project_order: 4
 pathway: Experience Research
-back_url: "/research/#mathematical-modelling"
+back_url: "/experience/mathematical-modelling/"
 back_label: Mathematical Modelling projects
 question: How can a smart grid balance changing demand, renewable supply, and stored energy?
 goals:

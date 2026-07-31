@@ -6,7 +6,7 @@ area: Mathematical Modelling
 area_slug: mathematical-modelling
 project_order: 3
 pathway: Experience Research
-back_url: "/research/#mathematical-modelling"
+back_url: "/experience/mathematical-modelling/"
 back_label: Mathematical Modelling projects
 question: Which building choices can reduce a school's energy use while keeping rooms comfortable?
 goals:

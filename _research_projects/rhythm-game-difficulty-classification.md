@@ -6,7 +6,7 @@ area: Algorithms & Discrete Mathematics
 area_slug: algorithms-discrete-mathematics
 project_order: 6
 pathway: Experience Research
-back_url: "/research/#algorithms-discrete-mathematics"
+back_url: "/experience/algorithms-discrete-mathematics/"
 back_label: Algorithms & Discrete Mathematics projects
 question: Which measurable patterns in a rhythm-game chart determine its difficulty?
 goals:

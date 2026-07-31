@@ -6,7 +6,7 @@ area: Geometry & Dynamics
 area_slug: geometry-dynamics
 project_order: 9
 pathway: Experience Research
-back_url: "/research/#geometry-dynamics"
+back_url: "/experience/geometry-dynamics/"
 back_label: Geometry & Dynamics projects
 question: Which regular polyhedra can be built from Kanoodle pieces, and what makes the construction possible?
 goals:

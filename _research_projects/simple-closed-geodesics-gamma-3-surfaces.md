@@ -6,7 +6,7 @@ area: Geometry & Dynamics
 area_slug: geometry-dynamics
 project_order: 4
 pathway: Experience Research
-back_url: "/research/#geometry-dynamics"
+back_url: "/experience/geometry-dynamics/"
 back_label: Geometry & Dynamics projects
 question: Which closed geodesics on a Γ(3) surface have no self-intersections?
 goals:

@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Hyperbolic Surface Code
-permalink: /topics/hyperbolic-surface-code/
+permalink: /explore/hyperbolic-surface-code/
 description: Explore quantum codes built from tilings and topology on hyperbolic surfaces.
 nav: false
 pathway: Explore Research
-back_url: /topics/
+back_url: /explore/
 back_label: Explore Research
 question: How can a hyperbolic tiling protect quantum information through topology?
 goals:

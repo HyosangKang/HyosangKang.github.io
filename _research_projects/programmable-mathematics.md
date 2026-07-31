@@ -6,7 +6,7 @@ area: Mathematical Foundations
 area_slug: mathematical-foundations
 project_order: 1
 pathway: Experience Research
-back_url: "/research/#mathematical-foundations"
+back_url: "/experience/mathematical-foundations/"
 back_label: Mathematical Foundations projects
 question: Which parts of mathematical reasoning can be expressed as precise executable rules?
 goals:

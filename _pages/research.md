@@ -1,49 +1,62 @@
 ---
 layout: page
 title: Experience Research
-permalink: /research/
+permalink: /experience/
 description: Experience the research process through guided projects.
 nav: true
 nav_order: 2
 dropdown: true
 children:
   - title: All research projects
-    permalink: /research/
+    permalink: /experience/
   - title: divider
   - title: Geometry & Dynamics
-    permalink: /research/#geometry-dynamics
+    permalink: /experience/geometry-dynamics/
   - title: Algorithms & Discrete Mathematics
-    permalink: /research/#algorithms-discrete-mathematics
+    permalink: /experience/algorithms-discrete-mathematics/
   - title: Quantum Computing
-    permalink: /research/#quantum-computing
+    permalink: /experience/quantum-computing/
   - title: Mathematical Modelling
-    permalink: /research/#mathematical-modelling
+    permalink: /experience/mathematical-modelling/
   - title: Mathematical Foundations
-    permalink: /research/#mathematical-foundations
+    permalink: /experience/mathematical-foundations/
 ---
 
 <p class="project-intro">
-  Choose a guided project to experience how a mathematical question develops
-  into investigation, computation, and research. These projects come from
-  R&amp;E, pre-URP, and UGRP programs.
+  Choose a research area, then find a guided project that shows how a
+  mathematical question develops into investigation, computation, and
+  research. These projects come from R&amp;E, pre-URP, and UGRP programs.
 </p>
 
-<h2 id="geometry-dynamics">Geometry &amp; Dynamics</h2>
-
-{% include research-project-list.liquid area="geometry-dynamics" %}
-
-<h2 id="algorithms-discrete-mathematics">Algorithms &amp; Discrete Mathematics</h2>
-
-{% include research-project-list.liquid area="algorithms-discrete-mathematics" %}
-
-<h2 id="quantum-computing">Quantum Computing</h2>
-
-{% include research-project-list.liquid area="quantum-computing" %}
-
-<h2 id="mathematical-modelling">Mathematical Modelling</h2>
-
-{% include research-project-list.liquid area="mathematical-modelling" %}
-
-<h2 id="mathematical-foundations">Mathematical Foundations</h2>
-
-{% include research-project-list.liquid area="mathematical-foundations" %}
+<div class="subject-grid">
+  <a class="subject-card" href="{{ '/experience/geometry-dynamics/' | relative_url }}">
+    <span class="subject-count">9 projects</span>
+    <h2>Geometry &amp; Dynamics</h2>
+    <p>Spaces, tilings, geodesics, manifolds, and motion on curved surfaces.</p>
+    <span class="subject-link">View research area →</span>
+  </a>
+  <a class="subject-card" href="{{ '/experience/algorithms-discrete-mathematics/' | relative_url }}">
+    <span class="subject-count">8 projects</span>
+    <h2>Algorithms &amp; Discrete Mathematics</h2>
+    <p>Graphs, finite structures, fair division, computation, and scheduling.</p>
+    <span class="subject-link">View research area →</span>
+  </a>
+  <a class="subject-card" href="{{ '/experience/quantum-computing/' | relative_url }}">
+    <span class="subject-count">12 projects</span>
+    <h2>Quantum Computing</h2>
+    <p>Quantum circuits, algorithms, annealing, and error correction.</p>
+    <span class="subject-link">View research area →</span>
+  </a>
+  <a class="subject-card" href="{{ '/experience/mathematical-modelling/' | relative_url }}">
+    <span class="subject-count">4 projects</span>
+    <h2>Mathematical Modelling</h2>
+    <p>Equations and simulations for biological, social, and engineered systems.</p>
+    <span class="subject-link">View research area →</span>
+  </a>
+  <a class="subject-card" href="{{ '/experience/mathematical-foundations/' | relative_url }}">
+    <span class="subject-count">2 projects</span>
+    <h2>Mathematical Foundations</h2>
+    <p>Axioms, abstraction, and the construction of mathematical objects in code.</p>
+    <span class="subject-link">View research area →</span>
+  </a>
+</div>

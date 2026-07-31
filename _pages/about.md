@@ -105,11 +105,11 @@ developed into publications, including work on efficient QUBO formulations for
 graph colouring and on the boundary of the Rauzy fractal.
 
 <div class="about-pathways">
-  <a href="{{ '/research/' | relative_url }}">
+  <a href="{{ '/experience/' | relative_url }}">
     <strong>Experience Research</strong>
     <span>Guided projects developed with students →</span>
   </a>
-  <a href="{{ '/topics/' | relative_url }}">
+  <a href="{{ '/explore/' | relative_url }}">
     <strong>Explore Research</strong>
     <span>Background to continuing research topics →</span>
   </a>

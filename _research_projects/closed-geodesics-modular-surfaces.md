@@ -6,7 +6,7 @@ area: Geometry & Dynamics
 area_slug: geometry-dynamics
 project_order: 3
 pathway: Experience Research
-back_url: "/research/#geometry-dynamics"
+back_url: "/experience/geometry-dynamics/"
 back_label: Geometry & Dynamics projects
 question: Which geodesic paths return to where they started on a modular surface?
 goals:

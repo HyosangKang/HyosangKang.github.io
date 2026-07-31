@@ -6,7 +6,7 @@ area: Geometry & Dynamics
 area_slug: geometry-dynamics
 project_order: 8
 pathway: Experience Research
-back_url: "/research/#geometry-dynamics"
+back_url: "/experience/geometry-dynamics/"
 back_label: Geometry & Dynamics projects
 question: How does the curvature of space change the motion of interacting bodies?
 goals:

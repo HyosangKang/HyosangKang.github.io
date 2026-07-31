@@ -6,7 +6,7 @@ area: Quantum Computing
 area_slug: quantum-computing
 project_order: 8
 pathway: Experience Research
-back_url: "/research/#quantum-computing"
+back_url: "/experience/quantum-computing/"
 back_label: Quantum Computing projects
 question: How does a graph describe an entangled state and its stabilizer equations?
 goals:

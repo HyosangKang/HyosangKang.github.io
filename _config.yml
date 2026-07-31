@@ -178,7 +178,7 @@ collections:
     permalink: /learn/:name/
   research_projects:
     output: true
-    permalink: /research/:name/
+    permalink: /experience/:name/
 
 # -----------------------------------------------------------------------------
 # Jekyll settings

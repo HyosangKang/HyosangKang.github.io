@@ -43,22 +43,22 @@ nav_order: 4
 ## Explore Research
 
 <div class="subject-grid">
-  <a class="subject-card" href="{{ '/topics/rauzy-fractal/' | relative_url }}">
+  <a class="subject-card" href="{{ '/explore/rauzy-fractal/' | relative_url }}">
     <span class="subject-count">Research Topic</span>
     <h3>Rauzy Fractal</h3>
     <span class="subject-link">Open topic →</span>
   </a>
-  <a class="subject-card" href="{{ '/topics/qubo/' | relative_url }}">
+  <a class="subject-card" href="{{ '/explore/qubo/' | relative_url }}">
     <span class="subject-count">Research Topic</span>
     <h3>QUBO</h3>
     <span class="subject-link">Open topic →</span>
   </a>
-  <a class="subject-card" href="{{ '/topics/hyperbolic-surface-code/' | relative_url }}">
+  <a class="subject-card" href="{{ '/explore/hyperbolic-surface-code/' | relative_url }}">
     <span class="subject-count">Research Topic</span>
     <h3>Hyperbolic Surface Code</h3>
     <span class="subject-link">Open topic →</span>
   </a>
-  <a class="subject-card" href="{{ '/topics/automated-timetabling-algorithm/' | relative_url }}">
+  <a class="subject-card" href="{{ '/explore/automated-timetabling-algorithm/' | relative_url }}">
     <span class="subject-count">Research Topic</span>
     <h3>Automated Timetabling Algorithm</h3>
     <span class="subject-link">Open topic →</span>

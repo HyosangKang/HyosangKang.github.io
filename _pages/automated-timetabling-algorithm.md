@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Automated Timetabling Algorithm
-permalink: /topics/automated-timetabling-algorithm/
+permalink: /explore/automated-timetabling-algorithm/
 description: Generate and revise a university timetable under course, room, instructor, and student constraints.
 nav: false
 pathway: Explore Research
-back_url: /topics/
+back_url: /explore/
 back_label: Explore Research
 question: How can a university timetable be generated and revised while respecting courses, rooms, instructors, and students?
 goals:

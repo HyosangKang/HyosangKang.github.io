@@ -6,7 +6,7 @@ area: Mathematical Modelling
 area_slug: mathematical-modelling
 project_order: 1
 pathway: Experience Research
-back_url: "/research/#mathematical-modelling"
+back_url: "/experience/mathematical-modelling/"
 back_label: Mathematical Modelling projects
 question: How well can a modified compartment model explain real COVID-19 case data?
 goals:

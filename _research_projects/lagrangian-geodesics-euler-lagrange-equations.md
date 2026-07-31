@@ -6,7 +6,7 @@ area: Geometry & Dynamics
 area_slug: geometry-dynamics
 project_order: 7
 pathway: Experience Research
-back_url: "/research/#geometry-dynamics"
+back_url: "/experience/geometry-dynamics/"
 back_label: Geometry & Dynamics projects
 question: How does a rule of least energy determine the straightest path on a curved space?
 goals:

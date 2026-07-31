@@ -6,7 +6,7 @@ area: Mathematical Foundations
 area_slug: mathematical-foundations
 project_order: 2
 pathway: Experience Research
-back_url: "/research/#mathematical-foundations"
+back_url: "/experience/mathematical-foundations/"
 back_label: Mathematical Foundations projects
 question: How can familiar numbers and mathematical objects be built from a small set of axioms?
 goals:

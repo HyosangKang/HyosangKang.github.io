@@ -1,11 +1,11 @@
 ---
 layout: page
 title: QUBO
-permalink: /topics/qubo/
+permalink: /explore/qubo/
 description: Reduce graph-colouring models to efficient quadratic binary objectives for quantum annealing.
 nav: false
 pathway: Explore Research
-back_url: /topics/
+back_url: /explore/
 back_label: Explore Research
 question: How can a graph-colouring model be reduced to QUBO form with far fewer auxiliary variables?
 goals:

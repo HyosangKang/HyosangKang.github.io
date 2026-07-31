@@ -6,7 +6,7 @@ area: Algorithms & Discrete Mathematics
 area_slug: algorithms-discrete-mathematics
 project_order: 2
 pathway: Experience Research
-back_url: "/research/#algorithms-discrete-mathematics"
+back_url: "/experience/algorithms-discrete-mathematics/"
 back_label: Algorithms & Discrete Mathematics projects
 question: Can rooms and rent be divided so that every person prefers their own choice?
 goals:

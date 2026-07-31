@@ -907,7 +907,7 @@
         <article class="help-card">
           <p class="detail-overline">Project page</p>
           <h2>Return to the explanation</h2>
-          <p><a href="../../topics/automated-timetabling-algorithm/">Read the project description and algorithm overview.</a></p>
+          <p><a href="../../explore/automated-timetabling-algorithm/">Read the project description and algorithm overview.</a></p>
         </article>
       </section>`;
   }

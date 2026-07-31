@@ -6,7 +6,7 @@ area: Algorithms & Discrete Mathematics
 area_slug: algorithms-discrete-mathematics
 project_order: 5
 pathway: Experience Research
-back_url: "/research/#algorithms-discrete-mathematics"
+back_url: "/experience/algorithms-discrete-mathematics/"
 back_label: Algorithms & Discrete Mathematics projects
 question: How many time slots are needed when conflicting activities cannot occur together?
 goals:

@@ -22,7 +22,7 @@ nav: false
     </p>
     <span class="subject-link">Learn mathematics →</span>
   </a>
-  <a class="subject-card" href="{{ '/research/' | relative_url }}">
+  <a class="subject-card" href="{{ '/experience/' | relative_url }}">
     <span class="subject-count">Experience Research</span>
     <h2>Work through research projects</h2>
     <p>
@@ -31,7 +31,7 @@ nav: false
     </p>
     <span class="subject-link">Experience research →</span>
   </a>
-  <a class="subject-card" href="{{ '/topics/' | relative_url }}">
+  <a class="subject-card" href="{{ '/explore/' | relative_url }}">
     <span class="subject-count">Explore Research</span>
     <h2>Explore mathematical ideas</h2>
     <p>

@@ -6,7 +6,7 @@ area: Mathematical Modelling
 area_slug: mathematical-modelling
 project_order: 2
 pathway: Experience Research
-back_url: "/research/#mathematical-modelling"
+back_url: "/experience/mathematical-modelling/"
 back_label: Mathematical Modelling projects
 question: Can Gaussian functions describe useful interactions or shapes in a protein-folding model?
 goals:
