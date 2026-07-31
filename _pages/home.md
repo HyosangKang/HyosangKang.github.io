@@ -6,6 +6,23 @@ description: Mathematical projects for learning, exploration, and research.
 nav: false
 ---
 
+<div class="site-hero">
+  <img
+    class="site-hero-mark site-mark-light"
+    src="{{ '/assets/img/logo.svg' | relative_url }}"
+    alt="A curved triangle inside a circle, inspired by hyperbolic geometry"
+    width="132"
+    height="132"
+  >
+  <img
+    class="site-hero-mark site-mark-dark"
+    src="{{ '/assets/img/logo-dark.svg' | relative_url }}"
+    alt="A curved triangle inside a circle, inspired by hyperbolic geometry"
+    width="132"
+    height="132"
+  >
+</div>
+
 <p class="project-intro">
   Math Projects is a collection of guided mathematical projects for high-school
   and undergraduate students. Choose a pathway to learn mathematics through
