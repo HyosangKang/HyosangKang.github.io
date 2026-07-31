@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">Math Projects</title>
+  <desc id="logo-description">A curved triangle inside a circle, inspired by hyperbolic geometry.</desc>
+  <circle cx="60" cy="60" r="48" fill="none" stroke="#d6dae0" stroke-width="4"/>
+  <path
+    d="M60 14 C58 40 44 67 20 83 Q60 62 100 83 C76 67 62 40 60 14 Z"
+    fill="#55b9ad"
+    fill-opacity=".12"
+    stroke="#55b9ad"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="5"
+  />
+</svg>

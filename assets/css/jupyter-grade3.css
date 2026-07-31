@@ -480,6 +480,13 @@ pre {
   cursor: auto;
 }
 
+mark,
+.mark {
+  background-color: #ffffff;
+  color: #353535;
+  padding: 0.15em;
+}
+
 
 .well {
   background-color: #e4e4e4;
