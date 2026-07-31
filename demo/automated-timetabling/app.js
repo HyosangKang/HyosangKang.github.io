@@ -610,8 +610,24 @@
           </label>
         </div>
         <div id="progress-wrap" class="progress-wrap" ${state.running ? "" : "hidden"}>
-          <div class="progress-track"><span id="progress-bar" class="progress-bar is-searching"></span></div>
-          <span id="progress-copy">Trying valid placements and revising the backtracking step…</span>
+          <div class="progress-details">
+            <div class="progress-heading">
+              <strong id="progress-percent">0%</strong>
+              <span id="progress-count">0 of ${formatNumber(state.included.size)} placed</span>
+            </div>
+            <div
+              id="progress-track"
+              class="progress-track"
+              role="progressbar"
+              aria-label="Timetable generation progress"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <span id="progress-bar" class="progress-bar" style="width:0%"></span>
+            </div>
+            <span id="progress-copy" class="progress-copy">Preparing course constraints…</span>
+          </div>
           <button id="cancel-generation" class="text-button" type="button">Cancel</button>
         </div>
         <div id="grid-scroll" class="grid-scroll"></div>
@@ -775,16 +791,32 @@
         includeCourseIDs: Array.from(state.included),
         onProgress(progress) {
           const bar = document.querySelector("#progress-bar");
+          const track = document.querySelector("#progress-track");
+          const percentLabel = document.querySelector("#progress-percent");
+          const count = document.querySelector("#progress-count");
           const copy = document.querySelector("#progress-copy");
-          if (!bar || !copy) return;
-          const percent = Math.min(99, Math.max(0, Number(progress.percent) || 0));
-          if (percent > 2) {
-            bar.classList.remove("is-searching");
-            bar.style.width = `${percent}%`;
+          if (!bar || !track || !percentLabel || !count || !copy) return;
+
+          const percent = Math.min(100, Math.max(0, Number(progress.percent) || 0));
+          const completed = Math.max(0, Number(progress.completed) || 0);
+          const total = Math.max(0, Number(progress.total) || state.included.size);
+          const elapsed = formatElapsed(progress.elapsedMs);
+
+          bar.style.width = `${percent}%`;
+          track.setAttribute("aria-valuenow", String(percent));
+          percentLabel.textContent = `${percent}%`;
+          count.textContent = `${formatNumber(completed)} of ${formatNumber(total)} placed`;
+
+          if (progress.phase === "backtracking") {
+            const step = Math.max(1, Number(progress.backStep) || 1);
+            copy.textContent = `Revising ${formatNumber(step)} earlier ${step === 1 ? "placement" : "placements"} near ${progress.course || "a conflict"} · ${formatNumber(progress.backtracks)} backtracks · ${elapsed}`;
+          } else if (progress.phase === "complete") {
+            copy.textContent = `All included courses allocated · ${elapsed}`;
+          } else if (progress.course) {
+            copy.textContent = `Considering ${progress.course} · ${formatNumber(progress.attempts)} search updates · ${elapsed}`;
+          } else {
+            copy.textContent = `Preparing course constraints · ${elapsed}`;
           }
-          copy.textContent = progress.course
-            ? `${formatNumber(progress.completed)} of ${formatNumber(progress.total)} placed · considering ${progress.course}`
-            : "Trying valid placements and revising the backtracking step…";
         },
       });
       state.assignments = Array.from(result.assignments || []);
@@ -921,6 +953,12 @@
 
   function formatNumber(value) {
     return new Intl.NumberFormat("en").format(Number(value) || 0);
+  }
+
+  function formatElapsed(value) {
+    const milliseconds = Math.max(0, Number(value) || 0);
+    if (milliseconds < 1000) return "under 1s";
+    return `${(milliseconds / 1000).toFixed(milliseconds < 10000 ? 1 : 0)}s`;
   }
 
   function text(value) {
