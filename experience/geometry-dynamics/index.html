@@ -1,0 +1,459 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Geometry &amp; Dynamics | Math Projects </title> <meta name="author" content="Hyosang Kang"> <meta name="description" content="Guided research projects about spaces, tilings, geodesics, manifolds, and motion."> <meta name="keywords" content="mathematics, projects, learning, research, education"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%88%91&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=9278fad11fbb7f97e25b00cf0f4948af"> <link rel="canonical" href="https://hyosangkang.github.io/experience/geometry-dynamics/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Math Projects </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Math Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Learn Mathematics </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/learn/">All subject projects</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/learn/calculus/">Calculus</a> <a class="dropdown-item " href="/learn/differential-equations/">Differential Equations</a> <a class="dropdown-item " href="/learn/linear-algebra/">Linear Algebra</a> <a class="dropdown-item " href="/learn/quantum-computing/">Quantum Computing</a> </div> </li> <li class="nav-item dropdown active"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Experience Research <span class="sr-only">(current)</span> </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/experience/">All research projects</a> <div class="dropdown-divider"></div> <a class="dropdown-item active" href="/experience/geometry-dynamics/">Geometry &amp; Dynamics</a> <a class="dropdown-item " href="/experience/algorithms-discrete-mathematics/">Algorithms &amp; Discrete Mathematics</a> <a class="dropdown-item " href="/experience/quantum-computing/">Quantum Computing</a> <a class="dropdown-item " href="/experience/mathematical-modelling/">Mathematical Modelling</a> <a class="dropdown-item " href="/experience/mathematical-foundations/">Mathematical Foundations</a> </div> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Explore Research </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/explore/">All research topics</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/explore/rauzy-fractal/">Rauzy Fractal</a> <a class="dropdown-item " href="/explore/qubo/">QUBO</a> <a class="dropdown-item " href="/explore/hyperbolic-surface-code/">Hyperbolic Surface Code</a> <a class="dropdown-item " href="/explore/automated-timetabling-algorithm/">Automated Timetabling Algorithm</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/browse/">Find Resources </a> </li> <li class="nav-item "> <a class="nav-link" href="/about/">About me </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title"> Geometry &amp; Dynamics </h1> <p class="post-description">Guided research projects about spaces, tilings, geodesics, manifolds, and motion.</p> </header> <article> <p><a class="project-back" href="/experience/">← All research areas</a></p> <p class="project-intro"> Geometry studies the shape and structure of spaces. Dynamics studies how points and systems move through those spaces. Together, they let us ask how curvature, topology, symmetry, and motion affect one another. </p> <p>These projects begin with objects that can be drawn or simulated—tilings, geodesics, polyhedra, manifolds, and moving bodies—but lead to deeper questions about curved spaces. Students may build a visual tool, follow a path on a surface, compare geometric models, or use computation to test a conjecture before developing a proof.</p> <div class="project-grid"> <a class="project-card" href="/experience/visual-tools-hyperbolic-geometry/"> <span class="project-number">01</span> <h2>Visual Tools for Hyperbolic Geometry</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/manifolds-natural-social-phenomena/"> <span class="project-number">02</span> <h2>Manifolds in Natural and Social Phenomena</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/closed-geodesics-modular-surfaces/"> <span class="project-number">03</span> <h2>Closed Geodesics on Modular Surfaces</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/simple-closed-geodesics-gamma-3-surfaces/"> <span class="project-number">04</span> <h2>Simple Closed Geodesics on Γ(3) Surfaces</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/markov-numbers-uniqueness-conjecture/"> <span class="project-number">05</span> <h2>Markov Numbers and the Uniqueness Conjecture</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/escherian-images-hyperbolic-tilings/"> <span class="project-number">06</span> <h2>Escherian Images Using Hyperbolic Tilings</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/lagrangian-geodesics-euler-lagrange-equations/"> <span class="project-number">07</span> <h2>Lagrangian Geodesics and Euler–Lagrange Equations</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/n-body-dynamics-curved-spaces/"> <span class="project-number">08</span> <h2>N-body Dynamics on Curved Spaces</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> <a class="project-card" href="/experience/kanoodle-regular-polyhedra/"> <span class="project-number">09</span> <h2>Kanoodle Constructions of Regular Polyhedra</h2> <p>A guided research project in Geometry &amp; Dynamics.</p> <span class="project-link">Open project page →</span> </a> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Hyosang Kang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-math-projects",
+    title: "Math Projects",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "dropdown-all-subject-projects",
+              title: "All subject projects",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/learn/";
+              },
+            },{id: "dropdown-calculus",
+              title: "Calculus",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/learn/calculus/";
+              },
+            },{id: "dropdown-differential-equations",
+              title: "Differential Equations",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/learn/differential-equations/";
+              },
+            },{id: "dropdown-linear-algebra",
+              title: "Linear Algebra",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/learn/linear-algebra/";
+              },
+            },{id: "dropdown-quantum-computing",
+              title: "Quantum Computing",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/learn/quantum-computing/";
+              },
+            },{id: "dropdown-all-research-projects",
+              title: "All research projects",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/experience/";
+              },
+            },{id: "dropdown-geometry-amp-dynamics",
+              title: "Geometry &amp; Dynamics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/experience/geometry-dynamics/";
+              },
+            },{id: "dropdown-algorithms-amp-discrete-mathematics",
+              title: "Algorithms &amp; Discrete Mathematics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/experience/algorithms-discrete-mathematics/";
+              },
+            },{id: "dropdown-quantum-computing",
+              title: "Quantum Computing",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/experience/quantum-computing/";
+              },
+            },{id: "dropdown-mathematical-modelling",
+              title: "Mathematical Modelling",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/experience/mathematical-modelling/";
+              },
+            },{id: "dropdown-mathematical-foundations",
+              title: "Mathematical Foundations",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/experience/mathematical-foundations/";
+              },
+            },{id: "dropdown-all-research-topics",
+              title: "All research topics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/explore/";
+              },
+            },{id: "dropdown-rauzy-fractal",
+              title: "Rauzy Fractal",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/explore/rauzy-fractal/";
+              },
+            },{id: "dropdown-qubo",
+              title: "QUBO",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/explore/qubo/";
+              },
+            },{id: "dropdown-hyperbolic-surface-code",
+              title: "Hyperbolic Surface Code",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/explore/hyperbolic-surface-code/";
+              },
+            },{id: "dropdown-automated-timetabling-algorithm",
+              title: "Automated Timetabling Algorithm",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/explore/automated-timetabling-algorithm/";
+              },
+            },{id: "nav-find-resources",
+          title: "Find Resources",
+          description: "Find all Math Projects resources in one place.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/browse/";
+          },
+        },{id: "nav-about-me",
+          title: "About me",
+          description: "About Hyosang Kang and the teaching and research behind Math Projects.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/about/";
+          },
+        },{id: "learning_projects-3d-graphing",
+          title: '3D Graphing',
+          description: "Draw the surface defined by a two-variable function.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/calculus/3d-graphing/";
+            },},{id: "learning_projects-making-a-calculator",
+          title: 'Making a Calculator',
+          description: "Compute basic functions using arithmetic operations.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/calculus/calculator/";
+            },},{id: "learning_projects-making-captcha",
+          title: 'Making CAPTCHA',
+          description: "Create and transform a CAPTCHA image.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/calculus/captcha/";
+            },},{id: "learning_projects-length-of-a-curve",
+          title: 'Length of a Curve',
+          description: "Compute the length of curves.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/calculus/curve-length/";
+            },},{id: "learning_projects-mnist-data",
+          title: 'MNIST Data',
+          description: "Build a neural-network model from scratch.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/calculus/mnist/";
+            },},{id: "learning_projects-area-of-a-polygon",
+          title: 'Area of a Polygon',
+          description: "Compute the area of a polygon.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/calculus/polygon-area/";
+            },},{id: "learning_projects-double-spring-motion",
+          title: 'Double-spring Motion',
+          description: "Model the coupled motion of two springs.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/double-spring/";
+            },},{id: "learning_projects-ecosystem-population-dynamics",
+          title: 'Ecosystem Population Dynamics',
+          description: "Model a food chain of coral, fish, and humans.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/ecosystem-population-dynamics/";
+            },},{id: "learning_projects-electric-circuit-simulation",
+          title: 'Electric-circuit Simulation',
+          description: "Model and simulate current in an electric circuit.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/electric-circuit/";
+            },},{id: "learning_projects-epidemic-simulation",
+          title: 'Epidemic Simulation',
+          description: "Model and simulate the spread of an epidemic.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/epidemic-simulation/";
+            },},{id: "learning_projects-lanchester-s-law",
+          title: 'Lanchester’s Law',
+          description: "Model competition and battle outcomes using Lanchester’s law.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/lanchesters-law/";
+            },},{id: "learning_projects-orbital-motion",
+          title: 'Orbital Motion',
+          description: "Explore paths created by an inverse-square gravitational force.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/orbital-motion/";
+            },},{id: "learning_projects-projectile-motion",
+          title: 'Projectile Motion',
+          description: "Launch an object and predict its path under gravity.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/projectile-motion/";
+            },},{id: "learning_projects-spring-oscillation",
+          title: 'Spring Oscillation',
+          description: "Explore damped, undamped, forced, and unforced spring oscillation.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/spring-oscillation/";
+            },},{id: "learning_projects-stone-skipping-simulation",
+          title: 'Stone-skipping Simulation',
+          description: "Model and simulate the motion of a skipping stone.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/differential-equations/stone-skipping/";
+            },},{id: "learning_projects-3d-visualization",
+          title: '3D Visualization',
+          description: "Rotate and zoom a three-dimensional object.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/linear-algebra/3d-visualization/";
+            },},{id: "learning_projects-aes-encryption",
+          title: 'AES Encryption',
+          description: "Investigate the mathematics used by AES encryption.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/linear-algebra/aes-encryption/";
+            },},{id: "learning_projects-image-classification-with-pca",
+          title: 'Image Classification with PCA',
+          description: "Use principal component analysis for image classification.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/linear-algebra/image-classification-pca/";
+            },},{id: "learning_projects-quantum-key-distribution-bb84",
+          title: 'Quantum Key Distribution: BB84',
+          description: "Investigate quantum key distribution through the BB84 protocol.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/quantum-computing/bb84/";
+            },},{id: "learning_projects-quantum-cryptography-shor-s-algorithm",
+          title: 'Quantum Cryptography: Shor’s Algorithm',
+          description: "Explore Shor’s algorithm and its implications for RSA.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/quantum-computing/shors-algorithm/";
+            },},{id: "learning_projects-quantum-simulator",
+          title: 'Quantum Simulator',
+          description: "Build a simulator for quantum states, gates, and circuits.",
+          section: "Learning_projects",handler: () => {
+              window.location.href = "/learn/quantum-computing/quantum-simulator/";
+            },},{id: "research_projects-axiomatic-construction-of-number-systems-and-mathematical-objects",
+          title: 'Axiomatic Construction of Number Systems and Mathematical Objects',
+          description: "A guided research project in Mathematical Foundations.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/axiomatic-number-systems-mathematical-objects/";
+            },},{id: "research_projects-bernstein-vazirani-encoding",
+          title: 'Bernstein–Vazirani Encoding',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/bernstein-vazirani-encoding/";
+            },},{id: "research_projects-busy-beaver-computation-using-quantum-algorithms",
+          title: 'Busy Beaver Computation Using Quantum Algorithms',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/busy-beaver-quantum-algorithms/";
+            },},{id: "research_projects-closed-geodesics-on-modular-surfaces",
+          title: 'Closed Geodesics on Modular Surfaces',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/closed-geodesics-modular-surfaces/";
+            },},{id: "research_projects-course-registration-and-school-timetabling",
+          title: 'Course Registration and School Timetabling',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/course-registration-school-timetabling/";
+            },},{id: "research_projects-covid-19-spread-modelling-with-differential-equations",
+          title: 'COVID-19 Spread Modelling with Differential Equations',
+          description: "A guided research project in Mathematical Modelling.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/covid-19-spread-modelling/";
+            },},{id: "research_projects-escherian-images-using-hyperbolic-tilings",
+          title: 'Escherian Images Using Hyperbolic Tilings',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/escherian-images-hyperbolic-tilings/";
+            },},{id: "research_projects-expander-graphs-for-pseudorandom-number-generation",
+          title: 'Expander Graphs for Pseudorandom-number Generation',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/expander-graphs-pseudorandom-numbers/";
+            },},{id: "research_projects-fair-allocation-of-shared-resources",
+          title: 'Fair Allocation of Shared Resources',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/fair-allocation-shared-resources/";
+            },},{id: "research_projects-fair-division-rental-harmony-and-sperner-s-lemma",
+          title: 'Fair Division, Rental Harmony, and Sperner’s Lemma',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/fair-division-rental-harmony-sperners-lemma/";
+            },},{id: "research_projects-gaussian-functions-in-protein-folding",
+          title: 'Gaussian Functions in Protein Folding',
+          description: "A guided research project in Mathematical Modelling.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/gaussian-functions-protein-folding/";
+            },},{id: "research_projects-graph-colouring-with-a-quantum-annealer",
+          title: 'Graph Colouring with a Quantum Annealer',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/graph-colouring-quantum-annealer/";
+            },},{id: "research_projects-graph-colouring-algorithms-for-scheduling",
+          title: 'Graph-colouring Algorithms for Scheduling',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/graph-colouring-scheduling/";
+            },},{id: "research_projects-graph-states-and-stabilizer-eigenstates",
+          title: 'Graph States and Stabilizer Eigenstates',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/graph-states-stabilizer-eigenstates/";
+            },},{id: "research_projects-grover-s-algorithm",
+          title: 'Grover’s Algorithm',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/grovers-algorithm/";
+            },},{id: "research_projects-kanoodle-constructions-of-regular-polyhedra",
+          title: 'Kanoodle Constructions of Regular Polyhedra',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/kanoodle-regular-polyhedra/";
+            },},{id: "research_projects-lagrangian-geodesics-and-euler-lagrange-equations",
+          title: 'Lagrangian Geodesics and Euler–Lagrange Equations',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/lagrangian-geodesics-euler-lagrange-equations/";
+            },},{id: "research_projects-manifolds-in-natural-and-social-phenomena",
+          title: 'Manifolds in Natural and Social Phenomena',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/manifolds-natural-social-phenomena/";
+            },},{id: "research_projects-markov-numbers-and-the-uniqueness-conjecture",
+          title: 'Markov Numbers and the Uniqueness Conjecture',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/markov-numbers-uniqueness-conjecture/";
+            },},{id: "research_projects-n-body-dynamics-on-curved-spaces",
+          title: 'N-body Dynamics on Curved Spaces',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/n-body-dynamics-curved-spaces/";
+            },},{id: "research_projects-neural-network-decoders-for-surface-codes",
+          title: 'Neural-network Decoders for Surface Codes',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/neural-network-decoders-surface-codes/";
+            },},{id: "research_projects-programmable-mathematics",
+          title: 'Programmable Mathematics',
+          description: "A guided research project in Mathematical Foundations.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/programmable-mathematics/";
+            },},{id: "research_projects-quantum-annealing-for-combinatorial-optimization",
+          title: 'Quantum Annealing for Combinatorial Optimization',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/quantum-annealing-combinatorial-optimization/";
+            },},{id: "research_projects-quantum-coding-blocks",
+          title: 'Quantum Coding Blocks',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/quantum-coding-blocks/";
+            },},{id: "research_projects-quantum-error-correction-game",
+          title: 'Quantum Error-correction Game',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/quantum-error-correction-game/";
+            },},{id: "research_projects-quantum-error-correction",
+          title: 'Quantum Error Correction',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/quantum-error-correction/";
+            },},{id: "research_projects-quantum-simulators",
+          title: 'Quantum Simulators',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/quantum-simulators/";
+            },},{id: "research_projects-rhythm-game-difficulty-classification-with-machine-learning",
+          title: 'Rhythm-game Difficulty Classification with Machine Learning',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/rhythm-game-difficulty-classification/";
+            },},{id: "research_projects-rubik-s-cube-as-a-turing-complete-computer",
+          title: 'Rubik’s Cube as a Turing-complete Computer',
+          description: "A guided research project in Algorithms &amp; Discrete Mathematics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/rubiks-cube-turing-complete-computer/";
+            },},{id: "research_projects-school-building-energy-efficiency-modelling",
+          title: 'School-building Energy-efficiency Modelling',
+          description: "A guided research project in Mathematical Modelling.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/school-building-energy-efficiency/";
+            },},{id: "research_projects-shor-s-algorithm",
+          title: 'Shor’s Algorithm',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/shors-algorithm/";
+            },},{id: "research_projects-simon-s-algorithm",
+          title: 'Simon’s Algorithm',
+          description: "A guided research project in Quantum Computing.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/simons-algorithm/";
+            },},{id: "research_projects-simple-closed-geodesics-on-γ-3-surfaces",
+          title: 'Simple Closed Geodesics on Γ(3) Surfaces',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/simple-closed-geodesics-gamma-3-surfaces/";
+            },},{id: "research_projects-smart-grid-simulation-and-optimization",
+          title: 'Smart-grid Simulation and Optimization',
+          description: "A guided research project in Mathematical Modelling.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/smart-grid-simulation-optimization/";
+            },},{id: "research_projects-visual-tools-for-hyperbolic-geometry",
+          title: 'Visual Tools for Hyperbolic Geometry',
+          description: "A guided research project in Geometry &amp; Dynamics.",
+          section: "Research_projects",handler: () => {
+              window.location.href = "/experience/visual-tools-hyperbolic-geometry/";
+            },},{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
