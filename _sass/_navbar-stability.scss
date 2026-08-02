@@ -27,3 +27,12 @@
 .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
   font-weight: inherit;
 }
+
+// Open every submenu from the left edge of its main navigation item. On a
+// narrow screen, a long submenu can then extend to the right instead of being
+// pushed beyond the left edge of the viewport.
+.navbar .dropdown-menu.dropdown-menu-left {
+  right: auto;
+  left: 0;
+  text-align: left;
+}
