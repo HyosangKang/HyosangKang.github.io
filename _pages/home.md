@@ -61,5 +61,5 @@ nav: false
   </a>
 </div>
 
-Use <a href="{{ '/browse/' | relative_url }}">Find Resources</a> to browse the
+Visit <a href="{{ '/browse/' | relative_url }}">All topics</a> to browse the
 complete collection.
