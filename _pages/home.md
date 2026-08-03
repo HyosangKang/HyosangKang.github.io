@@ -11,6 +11,7 @@ nav: false
     class="site-hero-mark site-mark-light"
     src="{{ '/assets/img/logo.svg' | relative_url }}"
     alt="A curved triangle inside a circle, inspired by hyperbolic geometry"
+    title="(&#8734;, &#8734;, &#8734;)-hyperbolic triangle"
     width="132"
     height="132"
   >
@@ -18,6 +19,7 @@ nav: false
     class="site-hero-mark site-mark-dark"
     src="{{ '/assets/img/logo-dark.svg' | relative_url }}"
     alt="A curved triangle inside a circle, inspired by hyperbolic geometry"
+    title="(&#8734;, &#8734;, &#8734;)-hyperbolic triangle"
     width="132"
     height="132"
   >
