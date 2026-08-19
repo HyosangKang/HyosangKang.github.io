@@ -23,3 +23,18 @@ do
   cp "$wasm_exec" "$output_dir/wasm_exec.js"
   echo "Built $game_name"
 done
+
+for game_name in electric-circuit double-spring
+do
+  source_dir="$repo_root/game-source/differential-labs"
+  output_dir="$repo_root/game/$game_name"
+  mkdir -p "$output_dir"
+
+  (
+    cd "$source_dir"
+    GOOS=js GOARCH=wasm go build -trimpath -ldflags="-s -w" -o "$output_dir/$game_name.wasm" .
+  )
+
+  cp "$wasm_exec" "$output_dir/wasm_exec.js"
+  echo "Built $game_name"
+done

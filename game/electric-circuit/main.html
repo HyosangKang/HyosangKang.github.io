@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A Go WebAssembly game for exploring a Laplace-transform solution of a double electric circuit."
+    />
+    <title>Current Quest — Double Circuit Lab</title>
+    <link rel="stylesheet" href="../game-shell.css" />
+    <script src="wasm_exec.js"></script>
+  </head>
+  <body
+    data-game-title="Current Quest"
+    data-game-subtitle="A Go WebAssembly double-circuit lab"
+    data-game-mode="electric-circuit"
+    data-game-wasm="electric-circuit.wasm"
+    data-game-controls="Click - or + to change L, R1, R2, C, and time|Use Up/Down to select and Left/Right to change a value|Keys 1, 2, and 3 load response presets|Space pauses, R restarts|Click the graph to inspect a time"
+  >
+    <script src="../game-shell.js"></script>
+  </body>
+</html>

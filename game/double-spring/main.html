@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A Go WebAssembly game for exploring the exact modal solution of a coupled double spring."
+    />
+    <title>Coupled Motion — Double Spring Lab</title>
+    <link rel="stylesheet" href="../game-shell.css" />
+    <script src="wasm_exec.js"></script>
+  </head>
+  <body
+    data-game-title="Coupled Motion"
+    data-game-subtitle="A Go WebAssembly double-spring lab"
+    data-game-mode="double-spring"
+    data-game-wasm="double-spring.wasm"
+    data-game-controls="Choose System or Initial and click - or + to change values|Use Tab to switch pages and arrow keys to change a value|Keys 1, 2, and 3 load motion presets|Space pauses, R restarts|Click the graph to inspect a time"
+  >
+    <script src="../game-shell.js"></script>
+  </body>
+</html>

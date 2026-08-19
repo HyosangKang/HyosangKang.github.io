@@ -82,6 +82,15 @@ differential-equations-ecosystem-populations:
       description: Change the numbers of humans, fish, and coral in a simple agent-based food-chain model.
       instructions: Press Enter to start. Use Q, W, and E to add humans, fish, and coral.
 
+differential-equations-double-spring:
+  examples:
+    - title: Coupled Motion
+      src: /game/double-spring/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/differential-labs
+      aspect_ratio: 16 / 10
+      description: Set two masses, two spring constants, and four initial values. The exact modal solution drives both the moving spring system and the two displacement traces.
+      instructions: Choose a motion preset or enter your own values, then select Apply & run. Use Space to pause, R to restart, or drag the time control.
+
 differential-equations-spring:
   examples:
     - title: Spring!
@@ -92,6 +101,13 @@ differential-equations-spring:
       instructions: Use the DAMP and FORCE buttons to change the model. Press R or click RESET to restart the motion.
 
 differential-equations-electric-circuit:
+  examples:
+    - title: Current Quest
+      src: /game/electric-circuit/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/differential-labs
+      aspect_ratio: 16 / 10
+      description: Change the inductor, resistors, capacitor, and time interval. The Laplace-transform solution animates current around both loops and traces both current graphs.
+      instructions: Choose a response preset or enter component values, then select Apply & run. Use Space to pause, R to restart, or drag the time control.
   source_images:
     - src: /assets/img/projects/differential-equations-electric-circuit-source.png
       alt: A series circuit with an inductor, resistor, capacitor, and voltage source.
