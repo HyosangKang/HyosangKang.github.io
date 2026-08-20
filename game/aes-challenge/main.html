@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Classify key strings and ciphertext blocks from the BS203 AES classroom challenge."
+    />
+    <title>Project I: AES Challenge</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="wasm_exec.js"></script>
+    <script src="loader.js" defer></script>
+  </head>
+  <body>
+    <div id="aes-challenge" class="app-shell">
+      <main class="loading-card" aria-live="polite">
+        <span class="loading-mark" aria-hidden="true"></span>
+        <p>Preparing the AES challenge…</p>
+      </main>
+    </div>
+    <noscript
+      >This simulator needs JavaScript and WebAssembly enabled.</noscript
+    >
+  </body>
+</html>

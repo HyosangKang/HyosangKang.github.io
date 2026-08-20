@@ -12,6 +12,9 @@ site.
   Ebitengine game with random laser targeting and tick-by-tick history.
 - `differential-labs` contains the exact Laplace/modal models and shared
   Ebitengine interface used by the double-circuit and double-spring games.
+- `aes-challenge` turns the Fall 2023 BS203 classroom assignment into an
+  accessible key-versus-ciphertext simulator and performs the AES-128
+  decryption in Go.
 
 The compiled `.wasm` files and their web interface live under `game/`. Run
 `scripts/build_games.sh` from the repository root to rebuild every game.

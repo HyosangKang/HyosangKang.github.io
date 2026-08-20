@@ -1,7 +1,7 @@
 ---
 layout: page
 title: AES Encryption
-description: Investigate the mathematics used by AES encryption.
+description: Classify the key strings and encrypted blocks from the BS203 AES challenge.
 permalink: /learn/linear-algebra/aes-encryption/
 subject: Linear Algebra
 subject_slug: linear-algebra
@@ -9,23 +9,23 @@ project_order: 1
 pathway: Learn Mathematics
 back_url: /learn/linear-algebra/
 back_label: Linear Algebra projects
-question: How do matrix and finite-field operations turn a readable message into encrypted data?
+question: Which of the given strings contains an AES key, and which one is ciphertext?
 goals:
-  - Represent a data block as a matrix of bytes.
-  - Implement and trace the main transformations in AES encryption.
-method_intro: Follow one block of data through a sequence of reversible rounds.
+  - Distinguish a key-container string from a ciphertext block.
+  - Connect a hidden 16-character key with one AES-128 decryption.
+method_intro: Revisit Project I from the Fall 2023 BS203 Linear Algebra class as an eight-round simulator.
 method:
-  - Arrange the input bytes in the AES state matrix and create the round keys.
-  - Apply byte substitution, row shifting, column mixing, and key addition.
-  - Test encryption with known examples and inspect how a small input change spreads.
+  - Inspect one unused key string and one unused encrypted string in each round.
+  - Choose the string that contains 16 consecutive characters used as the AES key.
+  - Check the classification, then reveal the hidden key window and decoded message.
 visual:
-  - label: Input
-    text: Plaintext byte matrix
-  - label: Rounds
-    text: Substitute, shift, mix, add key
-  - label: Output
-    text: Ciphertext block
-visual_caption: Each AES round rearranges and combines the bytes so the original pattern disappears.
+  - label: 16 strings
+    text: 8 key containers and 8 ciphertexts
+  - label: Classify
+    text: Decide which string has which role
+  - label: Reveal
+    text: Recover the hidden fruit message
+visual_caption: The original classroom challenge mixed key containers and ciphertext blocks that look alike.
 ---
 
 {% include resource-page.liquid %}

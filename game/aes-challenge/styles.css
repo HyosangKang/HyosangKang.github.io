@@ -1,0 +1,541 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  --ink: #f5f7fb;
+  --muted: #9cabc0;
+  --panel: #101a2b;
+  --panel-light: #17243a;
+  --line: #2c3b55;
+  --cyan: #53d9e8;
+  --cyan-dark: #102f3c;
+  --gold: #f4c95d;
+  --red: #ff7284;
+  --red-dark: #361b2a;
+  --green: #62e6a6;
+  --green-dark: #15352d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  background:
+    radial-gradient(circle at 90% 0%, rgb(43 100 123 / 24%), transparent 34rem),
+    #08101e;
+  color: var(--ink);
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1100px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3.5vw, 2.75rem);
+}
+
+.lab-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 2rem;
+  margin-bottom: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.eyebrow,
+.round-label,
+.feedback-kicker {
+  margin: 0 0 0.45rem;
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.55rem;
+  font-size: clamp(2.1rem, 6vw, 4.3rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.lab-intro {
+  max-width: 44rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+  line-height: 1.6;
+}
+
+.progress {
+  min-width: 7.6rem;
+  padding: 0.85rem 1rem 0.9rem;
+  border: 1px solid var(--line);
+  background: rgb(16 26 43 / 78%);
+  box-shadow: 0.4rem 0.4rem 0 #050a13;
+}
+
+.progress > span {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.progress strong {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 1.55rem;
+}
+
+.progress small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.round-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.round-heading h2 {
+  margin: 0;
+  font-size: clamp(1.18rem, 2.4vw, 1.65rem);
+}
+
+.score {
+  margin: 0;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.score span {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.choices {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.choice-card {
+  min-width: 0;
+  min-height: 10.25rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: linear-gradient(145deg, var(--panel-light), var(--panel));
+  box-shadow: 0.45rem 0.45rem 0 #050a13;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.choice-card:hover:not(:disabled) {
+  border-color: var(--cyan);
+  background: linear-gradient(145deg, #1b3045, #122235);
+  transform: translateY(-2px);
+}
+
+.choice-card:focus-visible,
+.primary-action:focus-visible,
+.secondary-action:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.choice-card:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.choice-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.choice-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.choice-badge {
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.choice-card code {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0.045em;
+}
+
+.choice-card.is-correct {
+  border-color: var(--green);
+  background: linear-gradient(145deg, var(--green-dark), #10251f);
+}
+
+.choice-card.is-correct .choice-badge {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.choice-card.is-ciphertext {
+  opacity: 0.68;
+}
+
+.choice-card.is-wrong {
+  border-color: var(--red);
+  background: linear-gradient(145deg, var(--red-dark), #241421);
+}
+
+.choice-card.is-wrong .choice-badge {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.versus {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: #08101e;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+}
+
+.hint,
+.feedback {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  background: rgb(16 26 43 / 82%);
+}
+
+.hint {
+  grid-template-columns: auto 1fr;
+  padding: 1rem 1.1rem;
+}
+
+.hint p,
+.feedback p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.hint strong {
+  color: var(--ink);
+}
+
+.hint-icon {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: Georgia, serif;
+  font-weight: 800;
+}
+
+.feedback {
+  grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 1fr) auto;
+  padding: 1rem;
+}
+
+.feedback h2 {
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+}
+
+.feedback.is-success {
+  border-color: #287657;
+  background: rgb(19 48 40 / 88%);
+}
+
+.feedback.is-error {
+  grid-template-columns: 1fr auto;
+  border-color: #7b3042;
+  background: rgb(52 25 39 / 90%);
+}
+
+.feedback.is-error .feedback-kicker {
+  color: var(--red);
+}
+
+.reveal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.reveal span {
+  min-width: 0;
+  padding: 0.65rem 0.75rem;
+  background: rgb(5 16 15 / 48%);
+}
+
+.reveal small {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #8fb9aa;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.reveal code,
+.reveal strong {
+  display: block;
+  overflow: hidden;
+  color: var(--green);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.primary-action,
+.secondary-action {
+  min-height: 2.8rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.primary-action {
+  border: 1px solid var(--cyan);
+  background: var(--cyan);
+  color: #07131a;
+}
+
+.primary-action:hover {
+  background: #91edf5;
+}
+
+.secondary-action {
+  border: 1px solid var(--red);
+  background: transparent;
+  color: var(--red);
+}
+
+.secondary-action:hover {
+  background: var(--red-dark);
+}
+
+.results-card,
+.loading-card {
+  width: min(42rem, 100%);
+  margin: clamp(3rem, 12vh, 8rem) auto 0;
+  padding: clamp(1.4rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+  background: rgb(16 26 43 / 90%);
+  box-shadow: 0.65rem 0.65rem 0 #050a13;
+}
+
+.results-card h1,
+.loading-card h1 {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+}
+
+.results-card > p:not(.eyebrow),
+.loading-card > p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.results-card dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 1.5rem 0;
+  background: var(--line);
+}
+
+.results-card dl div {
+  padding: 1rem;
+  background: var(--panel);
+}
+
+.results-card dt {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.results-card dd {
+  margin: 0.3rem 0 0;
+  color: var(--gold);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.loading-card {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.loading-mark {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--line);
+  border-top-color: var(--cyan);
+  animation: spin 800ms linear infinite;
+}
+
+.loading-card p {
+  margin-bottom: 0;
+}
+
+.error-card {
+  justify-items: start;
+  text-align: left;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 780px) {
+  .app-shell {
+    padding: 1.25rem;
+  }
+
+  .lab-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .progress {
+    min-width: 0;
+    width: fit-content;
+  }
+
+  .choices {
+    grid-template-columns: 1fr;
+  }
+
+  .versus {
+    top: 50%;
+  }
+
+  .feedback,
+  .feedback.is-error {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-action,
+  .secondary-action {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .round-heading {
+    display: block;
+  }
+
+  .score {
+    margin-top: 0.45rem;
+  }
+
+  .choice-card {
+    min-height: 8.5rem;
+  }
+
+  .choice-heading {
+    margin-bottom: 1.3rem;
+  }
+
+  .reveal,
+  .results-card dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

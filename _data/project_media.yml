@@ -122,6 +122,15 @@ differential-equations-electric-circuit:
       alt: A series circuit with an inductor, resistor, capacitor, and voltage source.
       caption: The RLC circuit used in the original engineering-mathematics material.
 
+linear-algebra-aes:
+  examples:
+    - title: "Project I: AES Challenge"
+      src: /game/aes-challenge/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/aes-challenge
+      aspect_ratio: 16 / 10
+      description: Classify all eight matched pairs from the original BS203 assignment. Each round contains one key-container string and one ciphertext block.
+      instructions: Select the string that contains the AES key. If the choice is wrong, retry the pair; if it is correct, inspect the hidden 16-character key and decoded message, then continue.
+
 linear-algebra-3d-visualization:
   examples:
     - title: Rotate!
