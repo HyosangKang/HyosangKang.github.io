@@ -6,6 +6,7 @@ permalink: /learn/differential-equations/lanchesters-law/
 subject: Differential Equations
 subject_slug: differential-equations
 project_order: 6
+has_game: true
 pathway: Learn Mathematics
 back_url: /learn/differential-equations/
 back_label: Differential Equations projects

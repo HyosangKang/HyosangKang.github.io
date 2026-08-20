@@ -8,6 +8,8 @@ site.
 - `throw` was copied from its original teaching-game repository.
 - `stone-skipping` is a new implementation based on
   `reference/StoneSkipping.m`.
+- `lanchester` extends the earlier two-force Go model into a multi-team
+  Ebitengine game with random laser targeting and tick-by-tick history.
 - `differential-labs` contains the exact Laplace/modal models and shared
   Ebitengine interface used by the double-circuit and double-spring games.
 

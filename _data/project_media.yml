@@ -82,6 +82,15 @@ differential-equations-ecosystem-populations:
       description: Change the numbers of humans, fish, and coral in a simple agent-based food-chain model.
       instructions: Press Enter to start. Use Q, W, and E to add humans, fish, and coral.
 
+differential-equations-lanchester:
+  examples:
+    - title: Lanchester Arena
+      src: /game/lanchester/main.html
+      source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/lanchester
+      aspect_ratio: 4 / 3
+      description: Arrange several coloured forces around an arena, then watch a Go WebAssembly game turn movement and ranged laser attacks into population curves.
+      instructions: Choose 2–6 teams and set each force size with the in-game controls. Press Enter to start, Space to pause, R to restart, or Esc to edit. After the battle, compare the matching team-colour survivor curves.
+
 differential-equations-double-spring:
   examples:
     - title: Coupled Motion
