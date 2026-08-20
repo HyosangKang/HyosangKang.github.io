@@ -1,0 +1,1 @@
+window.LEARNING_QUEST_CONFIG={endpoint:"",coachUrl:"https://chatgpt.com/",demoMode:!0};

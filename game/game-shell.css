@@ -58,7 +58,7 @@ summary {
 .game-kicker {
   margin: 0 0 0.16rem;
   color: #4dd7e5;
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -75,7 +75,7 @@ summary {
   overflow: hidden;
   margin: 0;
   color: #f2f2e8;
-  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
   font-weight: 400;
   line-height: 1.1;
   text-overflow: ellipsis;
@@ -86,7 +86,7 @@ summary {
   overflow: hidden;
   margin: 0;
   color: #91a8bd;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -114,7 +114,7 @@ summary {
 .game-status {
   gap: 0.42rem;
   padding: 0 0.65rem;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
 }
 
 .game-status-dot {
@@ -231,7 +231,7 @@ summary {
   display: block;
   margin-bottom: 0.55rem;
   color: #4dd7e5;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
@@ -240,10 +240,11 @@ summary {
   display: grid;
   gap: 0.38rem;
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 0;
   color: #b7c6d3;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.4;
+  list-style: none;
 }
 
 .game-error {
