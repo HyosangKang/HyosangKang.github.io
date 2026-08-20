@@ -90,6 +90,52 @@
   </ul>
 </section>
 
+{% if page.paper or page.matlab_code %}
+  <section class="resource-section">
+    <h2>Paper and MATLAB model</h2>
+    <div class="project-resources">
+      {% if page.paper %}
+        <article class="project-paper">
+          <span class="project-resource-type">Paper</span>
+          <div class="project-paper-heading">
+            <div>
+              <h3>{{ page.paper.title }}</h3>
+              <p class="project-paper-meta">{{ page.paper.authors }} · {{ page.paper.meta }}</p>
+            </div>
+            <a href="{{ page.paper.url }}" target="_blank" rel="noopener">Read on arXiv ↗</a>
+          </div>
+          {% if page.paper.description %}
+            <p>{{ page.paper.description }}</p>
+          {% endif %}
+        </article>
+      {% endif %}
+
+      {% if page.matlab_code %}
+        <details
+          class="project-code"
+          data-code-url="{{ page.matlab_code.url | relative_url }}"
+        >
+          <summary>
+            <span>
+              <span class="project-resource-type">MATLAB code</span>
+              <strong>{{ page.matlab_code.title }}</strong>
+            </span>
+            <span class="project-code-toggle" aria-hidden="true">Show code</span>
+          </summary>
+          <div class="project-code-toolbar">
+            {% if page.matlab_code.description %}
+              <p>{{ page.matlab_code.description }}</p>
+            {% endif %}
+            <a href="{{ page.matlab_code.url | relative_url }}" download>Download .m ↓</a>
+          </div>
+          <pre><code class="language-matlab" aria-live="polite">Open this panel to load the code.</code></pre>
+        </details>
+        <script src="{{ '/assets/js/project-code.js' | relative_url }}" defer></script>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
 {% if page.core_idea %}
   <section class="resource-section">
     <h2>The core idea: adaptive backtracking</h2>

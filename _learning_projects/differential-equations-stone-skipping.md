@@ -27,6 +27,16 @@ visual:
   - label: Result
     text: A sequence of skips
 visual_caption: The MATLAB force model produces a shallow sequence of skips whose height and spacing decrease as fluid drag removes speed.
+paper:
+  title: The physics of stone skipping
+  authors: Lyderic Bocquet
+  meta: arXiv:physics/0210015
+  url: https://arxiv.org/abs/physics/0210015
+  description: A simplified physical model for water impact, repeated bounces, and the conditions behind a successful throw.
+matlab_code:
+  title: StoneSkipping.m
+  url: /assets/code/StoneSkipping.m
+  description: The original Euler-step simulation behind this project, with clarified comments and unchanged equations.
 ---
 
 {% include resource-page.liquid %}
