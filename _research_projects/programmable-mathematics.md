@@ -1,30 +1,31 @@
 ---
 layout: page
 title: Programmable Mathematics
-description: A guided research project in Mathematical Foundations.
+description: Rebuild familiar mathematical ideas as small Go programs and discover the definitions hidden inside them.
 area: Mathematical Foundations
 area_slug: mathematical-foundations
 project_order: 1
 pathway: Experience Research
 back_url: "/experience/mathematical-foundations/"
 back_label: Mathematical Foundations projects
-question: Which parts of mathematical reasoning can be expressed as precise executable rules?
+question: What do we discover when we turn familiar mathematical ideas into programs we can run?
 goals:
-  - Encode selected mathematical objects and operations in a program.
-  - Use tests or formal checks to study the meaning and limits of the encoding.
-method_intro: Turn definitions into data structures and turn mathematical rules into operations.
+  - Recognize abstraction as keeping the essential behaviour of an idea while hiding its representation.
+  - Recreate natural numbers, functions, and other familiar objects from a few simple operations.
+  - Explain how different representations can express the same mathematical idea.
+method_intro: Begin with a question, build the smallest program that answers it, and let the mathematical definition emerge from the implementation.
 method:
-  - Choose a small mathematical system with clear primitives and laws.
-  - Implement its objects, valid operations, and equality rules.
-  - Test examples, edge cases, and statements that should remain invariant.
+  - Learn enough Go to work with values, loops, functions, methods, and a simple interface.
+  - Build natural numbers from zero, successor, and predecessor, then use that structure for counting, iteration, and arithmetic.
+  - Continue with a small object such as a function, set, point, or real-number computation; run examples and compare representations.
 visual:
-  - label: Definition
-    text: Objects and axioms
-  - label: Program
-    text: Data and executable rules
-  - label: Check
-    text: Examples and invariants
-visual_caption: Programming forces every mathematical object and operation to be stated without hidden steps.
+  - label: Question
+    text: What must this idea be able to do?
+  - label: Build
+    text: Write the smallest useful program
+  - label: Discover
+    text: Read the definition back from the code
+visual_caption: Combining simple expressions into a reusable function makes the structure of a mathematical idea visible and executable.
 ---
 
 {% include resource-page.liquid %}

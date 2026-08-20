@@ -96,7 +96,7 @@ differential-equations-double-spring:
     - title: Coupled Motion
       src: /game/double-spring/main.html
       source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/differential-labs
-      aspect_ratio: 16 / 10
+      aspect_ratio: 4 / 3
       description: Set two masses, two spring constants, and four initial values. The exact modal solution drives both the moving spring system and the two displacement traces.
       instructions: Choose a motion preset or enter your own values, then select Apply & run. Use Space to pause, R to restart, or drag the time control.
 
@@ -114,7 +114,7 @@ differential-equations-electric-circuit:
     - title: Current Quest
       src: /game/electric-circuit/main.html
       source_url: https://github.com/HyosangKang/HyosangKang.github.io/tree/master/game-source/differential-labs
-      aspect_ratio: 16 / 10
+      aspect_ratio: 4 / 3
       description: Change the inductor, resistors, capacitor, and time interval. The Laplace-transform solution animates current around both loops and traces both current graphs.
       instructions: Choose a response preset or enter component values, then select Apply & run. Use Space to pause, R to restart, or drag the time control.
   source_images:
@@ -214,9 +214,11 @@ qubo:
     - src: /assets/img/projects/qubo-motivation.png
       alt: A graph-colouring problem becomes a higher-degree binary objective that must be reduced to the quadratic form accepted by a quantum annealer.
       caption: "Motivation: compact graph-colouring encodings create terms above degree two, but a quantum annealer accepts pairwise terms. Each auxiliary bit introduced during reduction consumes another physical resource."
+      wide: true
     - src: /assets/img/projects/qubo-symmetric-reduction.png
       alt: Ten cubic monomials reduced separately with ten auxiliary bits compared with one symmetric block reduced using two auxiliary bits.
       caption: "Main idea: conventional methods reduce each monomial separately. The new method recognizes a homogeneous symmetric block and reduces its shared structure together."
+      wide: true
     - src: /assets/img/projects/qubo-resource-comparison.png
       alt: Bar charts comparing monomial and symmetric reductions for an eight-vertex complete graph, showing fewer binary variables and quadratic terms.
       caption: "Result for K₈ with eight colours: symmetric reduction uses 480 variables instead of 1,180 and 2,797 quadratic terms instead of 5,849."

@@ -26,8 +26,7 @@ nav: false
 </div>
 
 <p class="project-intro">
-  Math Projects is a collection of guided mathematical projects for high-school
-  and undergraduate students. Choose a pathway to learn mathematics through
+  Math Projects is a collection of guided mathematical projects for undergraduate students. Choose a pathway to learn mathematics through
   projects, experience the research process, or explore research topics.
 </p>
 
@@ -36,26 +35,23 @@ nav: false
     <span class="subject-count">Learn Mathematics</span>
     <h2>Learn through projects</h2>
     <p>
-      Explore subject-based projects in Calculus, Differential Equations, Linear
-      Algebra, and Quantum Computing.
+      Explore projects specifically designed for learning essential concepts in various subjects.
     </p>
     <span class="subject-link">Learn mathematics →</span>
   </a>
   <a class="subject-card" href="{{ '/experience/' | relative_url }}">
     <span class="subject-count">Experience Research</span>
-    <h2>Work through research projects</h2>
+    <h2>Experience mathematical research</h2>
     <p>
-      Take part in guided investigations developed for R&amp;E, pre-URP, and
-      undergraduate research programs.
+      Take part in guided research projects to experience how mathematical research works.
     </p>
     <span class="subject-link">Experience research →</span>
   </a>
   <a class="subject-card" href="{{ '/explore/' | relative_url }}">
     <span class="subject-count">Explore Research</span>
-    <h2>Explore mathematical ideas</h2>
+    <h2>Discover mathematical ideas</h2>
     <p>
-      Discover research topics connected to advanced investigations,
-      supervision, and publications.
+      Get involved in real math research topics, ranging from abstract math to real life problem solving.
     </p>
     <span class="subject-link">Explore research →</span>
   </a>

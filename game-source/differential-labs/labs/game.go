@@ -2,8 +2,8 @@ package labs
 
 import (
 	"bytes"
+	"differential-labs/gametext"
 	_ "embed"
-	"fmt"
 	"image/color"
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -101,7 +101,7 @@ func DrawText(screen *ebiten.Image, message string, size, x, y float64, itemColo
 	options.ColorScale.ScaleWithColor(itemColor)
 	options.PrimaryAlign = align
 	options.SecondaryAlign = text.AlignStart
-	text.Draw(screen, message, &text.GoTextFace{Source: fontFace, Size: size}, options)
+	text.Draw(screen, gametext.Clean(message), &text.GoTextFace{Source: fontFace, Size: size}, options)
 }
 
 func DrawBackgroundGrid(screen *ebiten.Image, spacing int) {
@@ -133,13 +133,7 @@ func clamp(value, low, high float64) float64 {
 }
 
 func formatValue(value float64, step float64) string {
-	if step >= 1 {
-		return fmt.Sprintf("%.0f", value)
-	}
-	if step < 0.1 {
-		return fmt.Sprintf("%.2f", value)
-	}
-	return fmt.Sprintf("%.1f", value)
+	return gametext.Value(value, step)
 }
 
 func justPressedPointer() (int, int, bool) {

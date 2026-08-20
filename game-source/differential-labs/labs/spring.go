@@ -1,6 +1,7 @@
 package labs
 
 import (
+	"differential-labs/gametext"
 	"fmt"
 	"image/color"
 	"math"
@@ -49,17 +50,17 @@ func NewSpringLab() *SpringLab {
 		},
 	}
 	lab.systemFields = []springField{
-		{"MASS M1", 0.1, 10, 0.1, func(p SpringParams) float64 { return p.M1 }, func(p *SpringParams, v float64) { p.M1 = v }},
-		{"MASS M2", 0.1, 10, 0.1, func(p SpringParams) float64 { return p.M2 }, func(p *SpringParams, v float64) { p.M2 = v }},
-		{"SPRING K1", 0.1, 20, 0.1, func(p SpringParams) float64 { return p.K1 }, func(p *SpringParams, v float64) { p.K1 = v }},
-		{"SPRING K2", 0.1, 20, 0.1, func(p SpringParams) float64 { return p.K2 }, func(p *SpringParams, v float64) { p.K2 = v }},
+		{"MASS M1 X10", 0.1, 10, 0.1, func(p SpringParams) float64 { return p.M1 }, func(p *SpringParams, v float64) { p.M1 = v }},
+		{"MASS M2 X10", 0.1, 10, 0.1, func(p SpringParams) float64 { return p.M2 }, func(p *SpringParams, v float64) { p.M2 = v }},
+		{"SPRING K1 X10", 0.1, 20, 0.1, func(p SpringParams) float64 { return p.K1 }, func(p *SpringParams, v float64) { p.K1 = v }},
+		{"SPRING K2 X10", 0.1, 20, 0.1, func(p SpringParams) float64 { return p.K2 }, func(p *SpringParams, v float64) { p.K2 = v }},
 		{"TIME RANGE", 4, 40, 1, func(p SpringParams) float64 { return p.T }, func(p *SpringParams, v float64) { p.T = v }},
 	}
 	lab.initialFields = []springField{
-		{"X1 AT ZERO", -3, 3, 0.1, func(p SpringParams) float64 { return p.X10 }, func(p *SpringParams, v float64) { p.X10 = v }},
-		{"V1 AT ZERO", -5, 5, 0.1, func(p SpringParams) float64 { return p.V10 }, func(p *SpringParams, v float64) { p.V10 = v }},
-		{"X2 AT ZERO", -3, 3, 0.1, func(p SpringParams) float64 { return p.X20 }, func(p *SpringParams, v float64) { p.X20 = v }},
-		{"V2 AT ZERO", -5, 5, 0.1, func(p SpringParams) float64 { return p.V20 }, func(p *SpringParams, v float64) { p.V20 = v }},
+		{"X1 START X10", -3, 3, 0.1, func(p SpringParams) float64 { return p.X10 }, func(p *SpringParams, v float64) { p.X10 = v }},
+		{"V1 START X10", -5, 5, 0.1, func(p SpringParams) float64 { return p.V10 }, func(p *SpringParams, v float64) { p.V10 = v }},
+		{"X2 START X10", -3, 3, 0.1, func(p SpringParams) float64 { return p.X20 }, func(p *SpringParams, v float64) { p.X20 = v }},
+		{"V2 START X10", -5, 5, 0.1, func(p SpringParams) float64 { return p.V20 }, func(p *SpringParams, v float64) { p.V20 = v }},
 	}
 	lab.applyPreset(0)
 	return lab
@@ -137,12 +138,12 @@ func (lab *SpringLab) handleClick(x, y int) {
 	}
 	for index := range lab.fields() {
 		rowY := float32(149 + index*48)
-		if (Button{X: 122, Y: rowY, W: 32, H: 27}).Contains(x, y) {
+		if (Button{X: 122, Y: rowY, W: 38, H: 29}).Contains(x, y) {
 			lab.selected = index
 			lab.adjustField(index, -1)
 			return
 		}
-		if (Button{X: 172, Y: rowY, W: 32, H: 27}).Contains(x, y) {
+		if (Button{X: 166, Y: rowY, W: 38, H: 29}).Contains(x, y) {
 			lab.selected = index
 			lab.adjustField(index, 1)
 			return
@@ -204,13 +205,14 @@ func (lab *SpringLab) Draw(screen *ebiten.Image) {
 
 func (lab *SpringLab) drawControls(screen *ebiten.Image) {
 	DrawPanel(screen, 7, 8, 207, 464)
-	DrawText(screen, "COUPLED MOTION", 22, 14, 15, White, text.AlignStart)
-	DrawText(screen, "DOUBLE SPRING LAB", 11, 14, 42, Cyan, text.AlignStart)
-	for index, preset := range lab.presets {
-		Button{X: float32(12 + index*66), Y: 62, W: 61, H: 25, Label: fmt.Sprintf("%d %s", index+1, preset.name), Color: Cyan, Active: index == lab.preset}.Draw(screen, 8)
+	DrawText(screen, "COUPLED MOTION", 25, 14, 13, White, text.AlignStart)
+	DrawText(screen, "DOUBLE SPRING LAB", 13, 14, 42, Cyan, text.AlignStart)
+	for index := range lab.presets {
+		shortName := []string{"MOVE", "SAME", "OPP"}[index]
+		Button{X: float32(12 + index*66), Y: 62, W: 61, H: 27, Label: fmt.Sprintf("%d %s", index+1, shortName), Color: Cyan, Active: index == lab.preset}.Draw(screen, 11)
 	}
-	Button{X: 12, Y: 94, W: 92, H: 27, Label: "SYSTEM", Color: Gold, Active: lab.tab == 0}.Draw(screen, 11)
-	Button{X: 112, Y: 94, W: 92, H: 27, Label: "INITIAL", Color: Gold, Active: lab.tab == 1}.Draw(screen, 11)
+	Button{X: 12, Y: 94, W: 92, H: 29, Label: "SYSTEM", Color: Gold, Active: lab.tab == 0}.Draw(screen, 13)
+	Button{X: 112, Y: 94, W: 92, H: 29, Label: "INITIAL", Color: Gold, Active: lab.tab == 1}.Draw(screen, 13)
 
 	for index, field := range lab.fields() {
 		y := float64(143 + index*48)
@@ -219,28 +221,28 @@ func (lab *SpringLab) drawControls(screen *ebiten.Image) {
 			itemColor = Gold
 			vector.DrawFilledRect(screen, 11, float32(y-5), 197, 41, color.RGBA{16, 42, 63, 210}, false)
 		}
-		DrawText(screen, field.label, 11, 15, y, itemColor, text.AlignStart)
-		DrawText(screen, formatValue(field.read(lab.params), field.step), 16, 114, y+13, White, text.AlignEnd)
-		Button{X: 122, Y: float32(y + 6), W: 32, H: 27, Label: "-", Color: Red}.Draw(screen, 17)
-		Button{X: 172, Y: float32(y + 6), W: 32, H: 27, Label: "+", Color: Green}.Draw(screen, 17)
+		DrawText(screen, field.label, 13, 15, y-1, itemColor, text.AlignStart)
+		DrawText(screen, formatValue(field.read(lab.params), field.step), 19, 114, y+13, White, text.AlignEnd)
+		Button{X: 122, Y: float32(y + 6), W: 38, H: 29, Label: "DEC", Color: Red}.Draw(screen, 10)
+		Button{X: 166, Y: float32(y + 6), W: 38, H: 29, Label: "INC", Color: Green}.Draw(screen, 10)
 	}
 
 	playLabel := "PAUSE"
 	if !lab.playing {
 		playLabel = "PLAY"
 	}
-	Button{X: 12, Y: 398, W: 91, H: 31, Label: playLabel, Color: Gold, Active: lab.playing}.Draw(screen, 12)
-	Button{X: 113, Y: 398, W: 91, H: 31, Label: "RESET", Color: Cyan}.Draw(screen, 12)
-	DrawText(screen, "TAB PAGE    ARROWS CHANGE", 9, 13, 437, Blue, text.AlignStart)
-	DrawText(screen, "SPACE PAUSE    R RESET", 9, 13, 452, Blue, text.AlignStart)
+	Button{X: 12, Y: 398, W: 91, H: 33, Label: playLabel, Color: Gold, Active: lab.playing}.Draw(screen, 14)
+	Button{X: 113, Y: 398, W: 91, H: 33, Label: "RESET", Color: Cyan}.Draw(screen, 14)
+	DrawText(screen, "TAB PAGE  ARROWS CHANGE", 11, 13, 438, Blue, text.AlignStart)
+	DrawText(screen, "SPACE PAUSE  R RESET", 11, 13, 455, Blue, text.AlignStart)
 	if lab.lastError != "" {
-		DrawText(screen, "INVALID PARAMETERS", 9, 13, 462, Red, text.AlignStart)
+		DrawText(screen, "INVALID PARAMETERS", 11, 13, 467, Red, text.AlignStart)
 	}
 }
 
 func (lab *SpringLab) drawSpringSystem(screen *ebiten.Image) {
 	DrawPanel(screen, 224, 8, 569, 268)
-	DrawText(screen, "TWO MASS SPRING SYSTEM", 17, 240, 18, White, text.AlignStart)
+	DrawText(screen, "TWO MASS SPRING SYSTEM", 20, 240, 16, White, text.AlignStart)
 	if lab.model == nil {
 		return
 	}
@@ -251,9 +253,9 @@ func (lab *SpringLab) drawSpringSystem(screen *ebiten.Image) {
 	x1 = clamp(x1, 390, 530)
 	x2 = clamp(x2, 585, 744)
 
-	DrawText(screen, fmt.Sprintf("X1  %+.3f M", sample.X1), 13, 777, 18, Cyan, text.AlignEnd)
-	DrawText(screen, fmt.Sprintf("X2  %+.3f M", sample.X2), 13, 777, 37, Red, text.AlignEnd)
-	DrawText(screen, fmt.Sprintf("ENERGY  %.3f J", sample.Energy), 11, 777, 57, Gold, text.AlignEnd)
+	DrawText(screen, fmt.Sprintf("X1 %s MM", gametext.Signed(sample.X1, 1000)), 16, 777, 18, Cyan, text.AlignEnd)
+	DrawText(screen, fmt.Sprintf("X2 %s MM", gametext.Signed(sample.X2, 1000)), 16, 777, 40, Red, text.AlignEnd)
+	DrawText(screen, fmt.Sprintf("ENERGY %s MJ", gametext.Magnitude(sample.Energy, 1000)), 13, 777, 62, Gold, text.AlignEnd)
 
 	vector.DrawFilledRect(screen, 252, 82, 18, 146, Blue, false)
 	for y := 86; y <= 222; y += 18 {
@@ -265,24 +267,24 @@ func (lab *SpringLab) drawSpringSystem(screen *ebiten.Image) {
 	vector.DrawFilledRect(screen, float32(x2-26), 126, 52, 56, Red, false)
 	vector.StrokeRect(screen, float32(x1-26), 126, 52, 56, 2, White, false)
 	vector.StrokeRect(screen, float32(x2-26), 126, 52, 56, 2, White, false)
-	DrawText(screen, "M1", 14, x1, 145, Black, text.AlignCenter)
-	DrawText(screen, "M2", 14, x2, 145, Black, text.AlignCenter)
+	DrawText(screen, "M1", 17, x1, 143, Black, text.AlignCenter)
+	DrawText(screen, "M2", 17, x2, 143, Black, text.AlignCenter)
 	drawLine(screen, 240, 205, 770, 205, 2, Blue)
 	for x := 250; x < 770; x += 16 {
 		drawLine(screen, float64(x), 205, float64(x-8), 215, 1, Blue)
 	}
 	drawLine(screen, 470, 115, 470, 210, 1, GridBlue)
 	drawLine(screen, 665, 115, 665, 210, 1, GridBlue)
-	DrawText(screen, "K1", 12, (270+x1-26)/2, 105, Cyan, text.AlignCenter)
-	DrawText(screen, "K2", 12, (x1+x2)/2, 105, Gold, text.AlignCenter)
-	DrawText(screen, fmt.Sprintf("NORMAL MODES  W1 %.3f   W2 %.3f", lab.model.Slow, lab.model.Fast), 12, 505, 239, White, text.AlignCenter)
-	DrawText(screen, "THE EXACT MODAL SOLUTION MOVES BOTH MASSES", 9, 505, 258, Blue, text.AlignCenter)
+	DrawText(screen, "K1", 15, (270+x1-26)/2, 103, Cyan, text.AlignCenter)
+	DrawText(screen, "K2", 15, (x1+x2)/2, 103, Gold, text.AlignCenter)
+	DrawText(screen, fmt.Sprintf("MODES X1000  W1 %s  W2 %s", gametext.Magnitude(lab.model.Slow, 1000), gametext.Magnitude(lab.model.Fast, 1000)), 14, 505, 237, White, text.AlignCenter)
+	DrawText(screen, "EXACT MODAL MOTION", 12, 505, 257, Blue, text.AlignCenter)
 }
 
 func (lab *SpringLab) drawGraph(screen *ebiten.Image) {
 	DrawPanel(screen, 224, 284, 569, 188)
-	DrawText(screen, "DISPLACEMENT VS TIME", 13, 240, 290, White, text.AlignStart)
-	DrawText(screen, "CLICK GRAPH TO SCRUB", 9, 777, 292, Blue, text.AlignEnd)
+	DrawText(screen, "DISPLACEMENT VS TIME", 16, 240, 288, White, text.AlignStart)
+	DrawText(screen, "CLICK GRAPH TO SCRUB", 11, 777, 291, Blue, text.AlignEnd)
 	if lab.model == nil {
 		return
 	}
@@ -292,7 +294,7 @@ func (lab *SpringLab) drawGraph(screen *ebiten.Image) {
 	for index := 0; index <= 4; index++ {
 		x := x0 + width*float64(index)/4
 		drawLine(screen, x, y0, x, y0+height, 1, GridBlue)
-		DrawText(screen, fmt.Sprintf("%.0f", lab.params.T*float64(index)/4), 8, x, 451, Blue, text.AlignCenter)
+		DrawText(screen, fmt.Sprintf("%.0f", lab.params.T*float64(index)/4), 11, x, 449, Blue, text.AlignCenter)
 	}
 	for index := 3; index < len(lab.model.Samples); index += 3 {
 		previous := lab.model.Samples[index-3]
@@ -311,7 +313,7 @@ func (lab *SpringLab) drawGraph(screen *ebiten.Image) {
 	drawLine(screen, markerX, y0, markerX, y0+height, 1, Gold)
 	vector.DrawFilledCircle(screen, float32(markerX), float32(middleY-sample.X1/lab.model.MaxAbs*height/2), 5, Cyan, false)
 	vector.DrawFilledCircle(screen, float32(markerX), float32(middleY-sample.X2/lab.model.MaxAbs*height/2), 5, Red, false)
-	DrawText(screen, fmt.Sprintf("T %.2f / %.0f", lab.time, lab.params.T), 10, 777, 454, Gold, text.AlignEnd)
+	DrawText(screen, fmt.Sprintf("TIME %d MS END %d MS", int(math.Round(lab.time*1000)), int(math.Round(lab.params.T*1000))), 12, 777, 452, Gold, text.AlignEnd)
 }
 
 func drawSpring(screen *ebiten.Image, x0, x1, y float64, itemColor color.Color) {

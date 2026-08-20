@@ -7,7 +7,7 @@ nav: true
 nav_order: 1
 dropdown: true
 children:
-  - title: All subject projects
+  - title: All subjects
     permalink: /learn/
   - title: divider
   - title: Calculus

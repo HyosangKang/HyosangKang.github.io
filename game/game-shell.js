@@ -1,19 +1,26 @@
 (() => {
   const body = document.body;
-  const title = body.dataset.gameTitle || "Math Project";
-  const subtitle =
-    body.dataset.gameSubtitle || "Interactive mathematical model";
+  const safeGameText = (value) =>
+    String(value)
+      .toUpperCase()
+      .replace(/[^A-Z0-9 ]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  const title = safeGameText(body.dataset.gameTitle || "Math Project");
+  const subtitle = safeGameText(
+    body.dataset.gameSubtitle || "Interactive mathematical model",
+  );
   const wasm = body.dataset.gameWasm;
   const controls = (body.dataset.gameControls || "")
     .split("|")
-    .map((item) => item.trim())
+    .map((item) => safeGameText(item))
     .filter(Boolean);
 
   body.innerHTML = `
     <div class="game-shell">
       <header class="game-topbar">
         <div class="game-heading">
-          <p class="game-kicker">Math project game</p>
+          <p class="game-kicker">MATH PROJECT GAME</p>
           <div class="game-title-row">
             <h1 class="game-title">${title}</h1>
             <p class="game-subtitle">${subtitle}</p>
@@ -22,23 +29,23 @@
         <div class="game-actions">
           <span class="game-status" id="game-status">
             <span class="game-status-dot" aria-hidden="true"></span>
-            <span class="game-status-text">Loading</span>
+            <span class="game-status-text">LOADING</span>
           </span>
           <details class="game-help">
-            <summary aria-label="Show controls" title="Controls">?</summary>
+            <summary aria-label="Show controls" title="Controls">H</summary>
             <div class="game-help-panel">
-              <strong>Controls</strong>
+              <strong>CONTROLS</strong>
               <ul>${controls.map((item) => `<li>${item}</li>`).join("")}</ul>
             </div>
           </details>
-          <button class="game-action" id="game-restart" type="button" aria-label="Restart game" title="Restart">↻</button>
-          <button class="game-action" id="game-fullscreen" type="button" aria-label="Open full screen" title="Full screen">⛶</button>
+          <button class="game-action" id="game-restart" type="button" aria-label="Restart game" title="Restart">R</button>
+          <button class="game-action" id="game-fullscreen" type="button" aria-label="Open full screen" title="Full screen">F</button>
         </div>
       </header>
       <main class="game-stage" id="game-stage" aria-label="${title} game canvas">
         <div class="game-loading" id="game-loading">
           <span class="game-loading-spinner" aria-hidden="true"></span>
-          <span>Loading game...</span>
+          <span>LOADING GAME</span>
         </div>
       </main>
     </div>
@@ -68,7 +75,7 @@
     stage.append(canvas);
     loading.remove();
     status.classList.add("is-ready");
-    statusText.textContent = "Ready";
+    statusText.textContent = "READY";
     return true;
   };
 
@@ -79,8 +86,8 @@
 
   const showError = (message) => {
     loading.classList.add("game-error");
-    loading.innerHTML = `<strong>The model could not start.</strong><span>${message}</span>`;
-    statusText.textContent = "Unavailable";
+    loading.innerHTML = `<strong>GAME COULD NOT START</strong><span>${safeGameText(message)}</span>`;
+    statusText.textContent = "UNAVAILABLE";
   };
 
   const start = async () => {

@@ -7,7 +7,7 @@ nav: true
 nav_order: 2
 dropdown: true
 children:
-  - title: All research projects
+  - title: All research areas
     permalink: /experience/
   - title: divider
   - title: Geometry & Dynamics
